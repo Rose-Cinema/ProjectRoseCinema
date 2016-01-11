@@ -38,7 +38,9 @@ public class TicketInfoBean {
 	@RequestMapping("/selectAllTicket")
 	@ResponseBody
 	public List<TicketDTO> selectAllTicket() {
+		System.out.println("1");
 		List<TicketDTO> ticketList = (List<TicketDTO>)sqlMapClient.queryForList("ticket.selectAllTicket",null);
+		System.out.println("2");
 		return ticketList;
 	}
 	

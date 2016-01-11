@@ -16,19 +16,46 @@
 <hr>
 
 ** 멤버십 카드 정보<br/>
-카드 리스트  &nbsp; &nbsp; &nbsp; &nbsp; <input type="button" value="카드 등록 및 해지" onclick="location.href='/RoseCinema/mypage/membership/memcardModify.jsp'">
+카드 리스트  &nbsp; &nbsp; &nbsp; &nbsp; 
+<input type="button" value="새로운 카드 등록" onclick="window.open('/RoseCinema/memcardRegister', 'login', 'width = 280, height = 250'); return false">
 
 <table border="1">
 	<tr>
-		<td width="100">NO</td>
 		<td width="100">카드번호</td>
-		<td width="100">등록일</td>
-		<td width="100">해지버튼</td>
+		<td width="100">카드이름</td>
+		<td width="100">카드등록일</td>
+		<td width="100">카드 삭제</td>
 	</tr>
 	
-	<tr>		
-		<td colspan="4"> [DB:카드 리스트 DB에서 꺼내주기]</td>
-	</tr>
+	<!-- c:if로 다시 해보기 -->
+
+		<c:forEach var="memdto" items="${memcard}">  	 			
+			<c:choose>
+				<c:when test="${memdto eq null}">
+					<tr><td colspan="4"> 등록된 카드가 없습니다 </td></tr>
+				</c:when>
+				
+				<c:otherwise>
+				<tr>
+					<td> ${memdto.mcard_id} </td>
+					<td> ${memdto.mcard_name} </td>
+					<td> ${memdto.first_date} </td>
+					<td> 
+						<form method="post" action="memcardDelete" name="cardbutton">
+						
+						<input type="hidden" name="mcard_id" value ="${memdto.mcard_id}" >
+						<input type="submit" name="deletecard" value="카드 해지" />
+						
+						</form>	
+					</td>
+				</tr>
+				</c:otherwise>
+			 
+			 </c:choose> 			
+			 
+  		</c:forEach>
+
+	
 </table>
 <br/>
  

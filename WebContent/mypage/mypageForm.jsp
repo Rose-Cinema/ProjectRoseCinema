@@ -39,33 +39,22 @@
 	
 	<hr>
 	
-**내 영화 내역** <br/>
-	
-	
-	**예매 내역<br/>
-	
-	 <select id="ticketinghistory">
-		<option value="latest">예매내역</option>
-		<option value="before">지난내역</option>
-		<option value="cancel">취소내역</option>
-	</select>
+**내 영화 내역**  <input type="button" value="나의 무비 히스토리">  <br/>
 
-	<table border="1">	 
-		 
-		 <tr>
-		 	<td>NO</td><td>예매번호</td><td>영화명</td><td>지점</td><td>상영일시</td><td>예매일</td><td>예매취소버튼[DB:삭제쿼리]</td>
-		 </tr>
-		 
-		 <tr>
-		 
-		 	<td colspan="7">
-		 	[DB:예매테이블에서 각각의 select type별로 게시판형태로 쫘르륵 불러오기!!]<br/>
-		 	'영화명' 클릭하면 해당 영화정보페이지로 넘어가고, 예매번호 클릭하면 해당 예매상세정보 페이지로 넘어가야 함!! 
-		 	</td>
-		 </tr>
-	 
-	 </table>
-	
+*현장에서 멤버쉽없이 예매를 하셨나요? 영수증 하단의 예매번호를 등록하고 내 무비 히스토리에 기록&감상평을 써보세요!
+<input type="button" value="영수증번호 등록하기"><br/>
+
+<input type="button" value="예매 내역" onclick="window.open('/RoseCinema/reserveList', 'login', 'width = 500, height = 500'); return false">
+
+
+
+
+
+<hr> 아이프레임으로 처리한것<br/>	
+<input type="button" value="예매내역"> <input type="button" value="지난내역"> <input type="button" value="취소내역">
+	<br />	
+		 <iframe width = "800" height="400" frameborder="1" scrolling="auto" src="mypage/myMovie/reserveList.jsp">
+
 	<hr>
 	
 	**나의 무비 히스토리<br/>

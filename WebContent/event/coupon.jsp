@@ -1,24 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<font size="5">ÄíÆù Å×ÀÌºí</font>
+<font size="5">ì¿ í° í…Œì´ë¸”</font>
 <form action="/RoseCinema/couponPro" method="post">
 	<table border="1">
 		<tr>
-			<td>ÄíÆù¹øÈ£</td>
+			<td>ì¿ í°ë²ˆí˜¸</td>
 		    <td><input type="text" name="coupon_id"></td>
-			<td>ÄíÆùÀÌ¸§</td>
+			<td>ì¿ í°ì´ë¦„</td>
 		 	<td><input type="text" name="coupon_name"></td>
 		</tr>
 		<tr>
-			<td>½ÃÀÛ³¯Â¥</td>
+			<td>ì‹œìž‘ë‚ ì§œ</td>
 			<td><input type="date" name="start_date"></td>
-			<td>Á¾·á³¯Â¥</td>
+			<td>ì¢…ë£Œë‚ ì§œ</td>
 			<td><input type="date" name="end_date"></td>
 		</tr>
 		<tr>
-			<td>ÄíÆùÅ¸ÀÔ</td>
+			<td>ì¿ í°íƒ€ìž…</td>
 			<td>
 			<select name="coupon_type">
 				<c:forEach var="typeDto" items="${typeList}">
@@ -26,18 +26,18 @@
 				</c:forEach>
 			</select>
 			</td>
-			<td>¹ßÇà¼ö</td>
+			<td>ë°œí–‰ìˆ˜</td>
 			<td><input type="number" name="coupon_count"></td>
-			<td>µî±Þ</td>
+			<td>ë“±ê¸‰</td>
 			<td><input type="text" name="mgrade_id"></td>
 		</tr>
 		<tr>
-			<td align="center">ÄíÆù ³»¿ë</td>
+			<td align="center">ì¿ í° ë‚´ìš©</td>
 			
 			<td align="center"><textarea name="coupon_content"></textarea></td>
 		</tr>
 		<tr>
-			<td align="center"><input type="submit" value="ÄíÆù ¹ß±Þ"/></td>
+			<td align="center"><input type="submit" value="ì¿ í° ë°œê¸‰"/></td>
 			
 		</tr>
 	</table>

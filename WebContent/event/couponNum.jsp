@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<font size="5">¹ßÇàÄíÆù Å×ÀÌºí</font>
+<font size="5">ë°œí–‰ì¿ í° í…Œì´ë¸”</font>
 <form action="/RoseCinema/couponNumPro" method="post">
 <table border="1">
 	<tr>
-		<td>ÄíÆù¹øÈ£</td>
+		<td>ì¿ í°ë²ˆí˜¸</td>
 		<td>
 		<select name="coupon_num">
 				<c:forEach var="numDto" items="${couponNumList}">
@@ -16,15 +16,15 @@
 		</td>
 	</tr>
 	<tr>
-		<td>»ç¿ë³¯Â¥</td>
+		<td>ì‚¬ìš©ë‚ ì§œ</td>
 		<td><input type="date" name="used_date"></td>
 	</tr>
 	<tr>
-		<td>»ç¿ëÀÚ</td>
+		<td>ì‚¬ìš©ìž</td>
 		<td><input type="text" name="id"></td>
 	</tr>
 	<tr>
-		<td align="center"><input type="submit" value="µî·Ï"/></td>
+		<td align="center"><input type="submit" value="ë“±ë¡"/></td>
 	</tr>
 </table>
 </form>	
