@@ -7,7 +7,9 @@
 	<typeAlias alias="couponDTO" type="rose.event.dto.CouponDTO"/>
 	<typeAlias alias="eventTypeDTO" type="rose.event.dto.EventTypeDTO"/>
 	<typeAlias alias="eventDTO" type="rose.event.dto.EventDTO"/>
-	<typeAlias alias="movieDTO" type="rose.DTO.MovieInfoDTO"/>
+	<typeAlias alias="movieDTO" type="rose.event.dto.MovieDTO"/>
+	
+	
 	
 	<insert id="typeInsert" parameterClass="typeDTO">
 		insert into coupon_type values(coupon_type_seq.nextval,#coupon_name#)
@@ -57,6 +59,11 @@
 	<select id="eventContent" resultClass="eventDTO" parameterClass="String">
 		select * from event where event_id = #event_id#
 	</select>
+	
+	<select id="timeTableInfo" resultClass="movieDTO" >
+		select tt.*, mi.movie_name from timetable tt, movie_info mi where tt.movie_id=mi.movie_id
+	</select>
+	
 
 </sqlMap>
 

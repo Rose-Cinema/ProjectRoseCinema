@@ -61,8 +61,9 @@
 		<td>영화정보</td><!--DB 정보 출력 -->
 		<td>
 			<select name="timetable_id">
-					<option value="1" >히말라야 A관 10:30</option>
-					<option value="2">스타워즈:깨어난포스</option>
+				<c:forEach var="movieDTO" items="${timeTableInfo }">
+					<option value="${movieDTO. }" >${ movieDTO.}</option>
+				</c:forEach>
 			</select>
 		</td>
 	</tr>

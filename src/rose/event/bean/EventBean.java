@@ -88,6 +88,20 @@ public class EventBean{
 		return "/event/eventContent.jsp";
 	}
 	
+	@RequestMapping("/top")
+	public String top(HttpServletRequest request)throws Exception{
+		return "/event/top.jsp";
+	}
+	
+	@RequestMapping("/main")
+	public String main(HttpServletRequest request)throws Exception{
+		return "/event/main.jsp";
+	}
+	
+	@RequestMapping("/bottom")
+	public String bottom(HttpServletRequest request)throws Exception{
+		return "/event/bottom.jsp";
+	}
 }
 
 
