@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<title>¿µÈ­ »ó¼¼</title>
+<title>ì˜í™” ìƒì„¸</title>
+<link href="style.css" rel="stylesheet" type="text/css">
 <html>
 <style> 
 html{height:100%;} 
@@ -36,36 +36,53 @@ textarea {width:500px; height:80px; overflow:visible;}
 
 
 <body>
-<table border="1" width="700" align="center">
+<table border="0" width="700" align="center">
 	<tr>
-		<td colspan="3">
-		<font size="5"><b>Á¦¸ñ :${dto.movie_name }</b></font>	</td>
+		<td colspan="3" class="line03">
+		<font size="5"><b>${dto.movie_name }</b></font>	</td>
 	</tr>
 	
 	<tr>
-		<td width="220" height="270" align="center">
+		<td width="220" height="270" align="center" class="line03">
 		<img src="/RoseCinema/movie/movie_image/${dto.movie_image}">
 		</td>
 	
 	
-		<td>
-		<b>°³ºÀÀÏ</b> : ${dto.opendate } <br/>
-		<b>°¨µ¶</b> : ${dto.director }<br/>
-		<b>Ãâ¿¬Áø</b> : ${dto.actor } <br/>
-		<b>Àå¸£</b> : ${dto.genre_id }<br/>
-		<b>¿¹¸ÅÀ²</b> : ${dto.ticket_rate }&nbsp;&nbsp;&nbsp; <b>ÆòÁ¡</b> : ${dto.score }&nbsp;&nbsp;&nbsp; <br/>
+		<td class="line03">
+		<b>ê°œë´‰ì¼</b> : ${dto.opendate } <br/>
+		<b>ê°ë…</b> : ${dto.director }<br/>
+		<b>ì¶œì—°ì§„</b> : ${dto.actor } <br/>
+		<b>ë“±ê¸‰</b> : 
+		<c:if test="${dto.grade_id eq 1}">ì „ì²´</c:if>
+		<c:if test="${dto.grade_id eq 2}">12ì„¸</c:if>
+		<c:if test="${dto.grade_id eq 3}">15ì„¸</c:if>
+		<c:if test="${dto.grade_id eq 4}">19ì„¸</c:if><br/>
+		<b>ì¥ë¥´</b> : 
+		<c:if test="${dto.genre_id eq 1}">ë©œë¡œ/ë¡œë§¨ìŠ¤</c:if>
+		<c:if test="${dto.genre_id eq 2}">ì•¡ì…˜</c:if>
+		<c:if test="${dto.genre_id eq 3}">ì½”ë¯¸ë””</c:if>
+		<c:if test="${dto.genre_id eq 4}">ë“œë¼ë§ˆ</c:if>
+		<c:if test="${dto.genre_id eq 5}">ë²”ì£„</c:if>
+		<c:if test="${dto.genre_id eq 6}">ìŠ¤ë¦´ëŸ¬</c:if>
+		<c:if test="${dto.genre_id eq 7}">ê³µí¬</c:if>
+		<c:if test="${dto.genre_id eq 8}">íŒíƒ€ì§€</c:if>
+		<c:if test="${dto.genre_id eq 9}">ì• ë‹ˆë©”ì´ì…˜</c:if>				
+		<br/>
+		<br/>
+		<b>ì˜ˆë§¤ìœ¨</b> : ${dto.ticket_rate }&nbsp;&nbsp;&nbsp; <b>í‰ì </b> : ${dto.score }&nbsp;&nbsp;&nbsp; <br/>
 		</td>
-		<td width="100" align="center">
+		<td width="100" align="center" class="line03">
 		<a href=""><img src="/RoseCinema/movie/img/reserve2.jpg">
 		</td>		
 	</tr>
 	
 	<tr>
-		<td colspan="3" height="100" >ÁÙ°Å¸® ${dto.synopsis }</td>
+		<td colspan="3" height="100" class="line03" ><b>ì¤„ê±°ë¦¬</b><br/>${dto.synopsis }</td>
+		
 	</tr>
 	
 	<tr>
-		<td colspan="3" height="300" >
+		<td colspan="3" height="300" class="line03"><b>ìŠ¤í‹¸ì»·</b><br/>
 		<c:forTokens var="stil" items="${dto.stilcut}" delims=",">
 			<img src="/RoseCinema/movie/stilcut/${stil}">
 		</c:forTokens> 
@@ -75,8 +92,8 @@ textarea {width:500px; height:80px; overflow:visible;}
 	</tr>
 	
 	<tr>
-		<td colspan="3" width="500" height="350" align="center">
-			<b>
+		<td colspan="3" width="500" height="350" class="line03"><b>ë™ì˜ìƒ</b><br/>
+			
 				<video autoplay loop  id="bgvid">
 	    			<source src="/RoseCinema/movie/video/${dto.video}" type="video/mp4">
 				</video>
@@ -88,17 +105,18 @@ textarea {width:500px; height:80px; overflow:visible;}
 	
 	
 	<tr>
-	<td height="100%" colspan="3" align="center">
+	<td height="100%" colspan="3" align="center" >
 	<div id="tab-Testing" style='display:inline'>
-	<form id="star" action="/RoseCinema/movie/comment.do" method="get">
+	<form id="star" action="/RoseCinema/movie/commentinsert.do" method="post">
+		<input type="hidden" name="movie_id"  value="${dto.movie_id}" />
 	<table width="100%"> 
 		<tr>
   			<td valign="top" height="50px" align="left">
 				<div class="Clear">
-				<b>ÇÑÁÙÆò</b>
+				<b>í•œì¤„í‰</b>
     			<div>
     				<c:forEach begin="1" end="5" step="1" var="i">
-    				<input class="hover-star" type="radio" name="score" value="${i}" title="${i}Á¡"/>
+    				<input class="hover-star" type="radio" name="score" value="${i}" title="${i}ì "/>
     				</c:forEach>
    				</div>
    				</div> 
@@ -106,9 +124,20 @@ textarea {width:500px; height:80px; overflow:visible;}
   		</tr>
   		
   		<tr>
-  			<td valign="top" width="5">
+  			<td valign="top" width="5" >
   				<textarea name="content" width="500" height="200"></textarea>
-   				<input type="submit" value="Àü¼Û" />  
+   				<input type="submit" value="ì „ì†¡" />   <br />
+   				<br/>
+   				
+   				
+   				<c:forEach var="commentDto" items="${commentList}">
+   				
+   					<b>ì‘ì„±ì</b> : ${commentDto.id} &nbsp;
+   					<b>ë‚´ìš©</b> : ${commentDto.content } &nbsp;&nbsp;
+   					<b>ì‘ì„±ì¼</b> : ${commentDto.reg_date } <br/>
+   					
+   				</c:forEach>
+   			
    			</td>
    		</tr>
 	</table>
