@@ -21,10 +21,10 @@
 
 <br/><br/>
 
-<c:if test="${logincheck == 1}">
-	check값: ${logincheck}
+<c:if test="${sessionScope.logincheck == 1}">
+	check값: ${sessionScope.logincheck}
 	<br/>
-	<h2>${sessionScope.memId} 님이 접속했습니다.! &nbsp; &nbsp; &nbsp; &nbsp;   이름: ${memName}, 회원넘버: ${memNum}  </h2> 
+	<h2>${sessionScope.memId} 님이 접속했습니다.! &nbsp; &nbsp; &nbsp; &nbsp;   이름: ${sessionScope.memName}, 회원넘버: ${memNum}  </h2> 
 	<hr>
 	회원정보수정, 회원탈퇴<-- 나중에 mypageForm.jsp에 이 a태그 갖다 붙이기!!!!  <br/>
 	<a href="/RoseCinema/modifyForm">회원정보수정</a>
@@ -36,6 +36,10 @@
 	 
 	 
 	<a href="/RoseCinema/deleteForm">회원탈퇴</a>
+	
+	
+	<a href="/RoseCinema/logout">
+							로그아웃</a>
 	
 	
 	<hr>
@@ -52,6 +56,8 @@
 
 
 
+
+ 
 
 
 

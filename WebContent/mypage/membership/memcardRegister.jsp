@@ -11,18 +11,24 @@
 * 멤버쉽 카드 등록하기
 
 
-<form method="post" action="inputPro" name="mcardmodify" onSubmit="return checkIt()">
+<form method="post" action="memcardRegisterPro" name="memcardregister" onSubmit="return checkIt()">
 	<table border="1">
 		<tr>
 			<td>카드번호</td>
-			<td><input type"text" name="mcard_id" size="16"></td>
+			<td><input type=text name="mcard_id" size="16"></td>
 		</tr>
 		
 		<tr>
 			<td>카드이름 설정</td>
-			<td><input type"text" name="mcard_name" size="16"></td>
+			<td><input type=text name="mcard_name" size="16"></td>
 		</tr>
 		
+		<input type=hidden name="member_id" value="${sessionScope.memNum}" />
+		
+		<input type=hidden name="isactive" value=1 />
+		
+		
+		<!-- hidden으로 member_id, first date,isactive 넘기기 -->
 		
 		<tr>
 			<td colspan="2">
@@ -35,28 +41,6 @@
 </form>
 
 <br/>
-
-* 나의 카드 
-
-<table border="1">
-	<tr>
-		<td>카드이름</td>  <td>카드번호</td> <td>발급일</td>
-	</tr>
-	
-	<tr>
-		<td colspan="3">
-		[DB:mcard테이블에서 게시판처럼 차트 쭉 불러오기!!]
-		</td>
-	</tr>
-
-
-
-</table>
-
-
-
-
-
 
 
 

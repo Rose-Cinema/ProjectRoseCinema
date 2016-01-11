@@ -7,6 +7,7 @@ public class McardInfoDTO {
 	private String first_date;
 	private String last_date;
 	private int isactive;
+	private String mcard_name;
 	
 	public int getMcard_id() {
 		return mcard_id;
@@ -38,4 +39,12 @@ public class McardInfoDTO {
 	public void setIsactive(int isactive) {
 		this.isactive = isactive;
 	}
+	public String getMcard_name() {
+		return mcard_name;
+	}
+	public void setMcard_name(String mcard_name) {
+		this.mcard_name = mcard_name;
+	}
+	
+	
 }

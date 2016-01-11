@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<font size="5">юл╨╔ф╝ е╦ют евюл╨М</font>
+<font size="5">Л²╢К╡╓М┼╦ М┐─Л·┘ М┘▄Л²╢К╦■</font>
 <form action="/RoseCinema/couponNumPro" method="post">
 <table border="1">
 	<tr>
-		<td>юл╨╔ф╝е╦ют ╬фюл╣П</td>
+		<td>Л²╢К╡╓М┼╦М┐─Л·┘ Л∙└Л²╢К■■</td>
 		<td>
 		<select name="coupon_num">
 				<c:forEach var="numDto" items="${couponNumList}">

@@ -2,6 +2,7 @@
 <%@ include file="/view/color.jsp"%>
 <html>
 <head><title>로그인</title>
+
 <link href="style.css" rel="stylesheet" type="text/css">
 
    <script language="javascript">

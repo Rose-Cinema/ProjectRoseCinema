@@ -8,5 +8,16 @@
 </head>
 <body>
 
+	<script language="javascript">
+	  alert("카드 등록 성공!");
+		
+	 
+	  opener.parent.location.reload(); 
+		self.close(); 
+		
+	  //history.go(-1);
+	</script>
+
+
 </body>
 </html>

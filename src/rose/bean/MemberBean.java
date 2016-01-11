@@ -79,7 +79,7 @@ public class MemberBean {
 	public String loginpro(MemberInfoDTO dto, HttpSession session, HttpServletRequest request){ //로그인 정보 가져오는 dto, 세션확인하는 session 매개변수 가져욤
 		check = (Integer)sqlMapClient.queryForObject("member.userCheck", dto);
 		
-		request.setAttribute("logincheck", check);
+		session.setAttribute("logincheck", check);
 		 
 		
 		mem11=(MemberInfoDTO)sqlMapClient.queryForObject("member.meminfo", dto);		
@@ -98,6 +98,14 @@ public class MemberBean {
 		else session.setAttribute("memId", "loginfail") ;
 		
 		return "/member/loginPro.jsp";
+	}
+	
+	
+	@RequestMapping("/logout")
+	public String logout(){
+		System.out.println("로그아웃");
+		
+		return "/member/logout.jsp";
 	}
 	
 	
