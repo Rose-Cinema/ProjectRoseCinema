@@ -23,7 +23,9 @@ public class EventBean{
 	@RequestMapping("/event")
 	public String event(HttpServletRequest request) throws Exception{
 		List couponlist = sqlMapClient.queryForList("event.couponlist",null);
+		List tablelist = sqlMapClient.queryForList("event.timeTableInfo",null);
 		request.setAttribute("couponlist", couponlist);
+		request.setAttribute("timeTableInfo", tablelist);
 		return "/event/event.jsp";
 	}
 	@RequestMapping("/eventMain")

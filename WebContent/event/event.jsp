@@ -55,14 +55,17 @@
 					<option value="${couponDTO.coupon_id}">${couponDTO.coupon_name}</option>
 				</c:forEach>
 			</select>
+			<a href="/RoseCinema/coupon" >쿠폰 생성</a>
 		</td>
+		
 	</tr>
 	<tr>
 		<td>영화정보</td><!--DB 정보 출력 -->
-		<td>
-			<select name="timetable_id">
+		<td colspan="3">
+		
+			<select name="timetable">
 				<c:forEach var="movieDTO" items="${timeTableInfo }">
-					<option value="${movieDTO. }" >${ movieDTO.}</option>
+					<option value="${movieDTO.timetable_id }" >날짜:${movieDTO.date_info}시작시간:${movieDTO.start_time}-${movieDTO.movie_name}</option>
 				</c:forEach>
 			</select>
 		</td>
@@ -71,6 +74,5 @@
 		<td colspan="4" align="center"><input type="submit" value="이벤트 등록"/></td>
 	</tr>
 	</table>
-	
 </form>
 </body>

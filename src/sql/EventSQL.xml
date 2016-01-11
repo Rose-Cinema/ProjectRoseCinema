@@ -61,7 +61,7 @@
 	</select>
 	
 	<select id="timeTableInfo" resultClass="movieDTO" >
-		select tt.*, mi.movie_name from timetable tt, movie_info mi where tt.movie_id=mi.movie_id
+		select tt.*, mi.movie_name from timetable tt, movie_info mi where mi.movie_id=tt.movie_id
 	</select>
 	
 
