@@ -9,59 +9,7 @@ IMG {border: none;}
 th, td {border: 1px solid #006666; font-size: 14;}
 </style> 
 
-<script type="text/javascript">
 
-	var preResize = $(window).width();
-
-	$(document).ready(function() {
-		MovieList.init('movie');
-
-	
-		$('.sort_wrap li a').each(function() {
-			$(this).click(function() {
-				$('.sort_wrap li a').removeClass('active');
-				$(this).addClass('active');
-			});
-		});
-		
-		// 창크기에 따라 행갯수 동적변경 처리
-		var item_size = 246;
-		var w_size = $(window).width();
-		var itemCount = parseInt(w_size / item_size);
-		
-		if (w_size<985){
-			$('#flip_wrapper').width(984);
-		} else {
-			$('#flip_wrapper').width(item_size * itemCount);
-		}
-	});
-	
-	$(window).resize(function(){
-		var item_size = 246;
-		var w_size = $(window).width();
-		var wrap_size = $('#flip_wrapper').width();
-		var e_size = w_size - wrap_size;
-		
-		if (w_size<985){
-			$('#flip_wrapper').width(984);
-		} else {
-			var afterResize = $(window).width();
-			
-			if (preResize < afterResize) {
-				if (e_size > item_size) {
-					$('#flip_wrapper').width(wrap_size+item_size);
-				} 
-			} else {
-				if (w_size <= wrap_size)  {
-					$('#flip_wrapper').width(wrap_size - item_size);
-				}
-			}
-			
-			preResize = afterResize;
-		}		
-	});
-	
-</script>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -111,17 +59,7 @@ th, td {border: 1px solid #006666; font-size: 14;}
 	</c:forEach>
 	
 </table>
-<div class="full-width" align="center">
-		<div id="flip_wrapper">
-			<div class="movielist_util_wrap">
-			
-			</div>
-			<ul id="movieList">
-				
-			</ul>
-			<button id="moreMovieList" type="button" class="view_more full_width" onclick="MovieList.getMore()">더보기 +</button>
-		</div>
-	</div>
+
 
 
 </body>
