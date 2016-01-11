@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="area">
+	
+	<typeAlias alias="Area" type="rose.dto.AreaDTO"/>
+	
+	<!-- Select All -->
+	<select id="getAreaList" resultClass="Area">
+		select * from AREA_INFO
+	</select>
+	
+	<!-- insert new area -->
+	<insert id="setNewArea" parameterClass ="Area">
+		insert into AREA_INFO values(#area_id#,#area_name#)
+	</insert>
+	
+	<!-- select with area_id -->
+	<select id="getAreaInfo" resultClass="Area" parameterClass="int">
+		select * from AREA_INFO where AREA_ID = #area_id#
+	</select>
+	
+	<!-- update area information -->
+	<update id="updateAreaInfo" parameterClass="Area">
+		update AREA_INFO set AREA_NAME = #area_name# where AREA_ID = #area_id#
+	</update>
+	
+	<!-- delete area -->
+	<delete id="deleteArea" parameterClass="int">
+		delete from AREA_INFO where AREA_ID = #area_id#
+	</delete>
+	
+</sqlMap>

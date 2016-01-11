@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="screen">
+	<typeAlias alias="screenDTO" type="rose.dto.ScreenDTO"/>
+	
+	<select id="selectAllScreenInfo" resultClass="screenDTO">
+		SELECT * FROM SCREEN_INFO
+	</select>
+	
+	<select id="selectAllScreenID" resultClass="int">
+		SELECT SCREEN_ID FROM SCREEN_INFO
+	</select>
+</sqlMap>

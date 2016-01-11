@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="movie">
+	<typeAlias alias="Movie" type="rose.dto.MovieDTO"/>
+	
+	<!-- Select All -->
+	<select id="getAllMovieList" resultClass="Movie">
+		SELECT * FROM MOVIE_INFO
+	</select>
+	
+	<select id="getAllIdList" resultClass="int">
+		SELECT MOVIE_ID FROM MOVIE_INFO
+	</select>
+	
+	<select id="getAllNameList" resultClass="String">
+		SELECT MOVIE_NAME FROM MOVIE_INFO
+	</select>
+	
+	<select id="getMovieById" resultClass="Movie" parameterClass="int">
+		SELECT * FROM MOVIE_INFO WHERE MOVIE_ID = #movie_id#
+	</select>
+	
+	<select id="getMovieByName" resultClass="Movie" parameterClass="String">
+		SELECT * FROM MOVIE_INFO WHERE MOVIE_NAME = #movie_name#
+	</select>
+	
+	<select id="getIdByName" resultClass="int" parameterClass="String">
+		SELECT MOVIE_ID FROM MOVIE_INFO WHERE MOVIE_NAME = #movie_name#
+	</select>
+	
+	<select id="getNameById" resultClass="String" parameterClass="int">
+		SELECT MOVIE_NAME FROM MOVIE_INFO WHERE MOVIE_ID = #movie_id#
+	</select>
+	
+	<insert id="insertMovie" parameterClass="Movie">
+		INSERT INTO MOVIE_INFO VALUES(MOVIE_ID_SEQ.MEXTVAL,#movie_name#,#movie_image#,#ticket_rate#,#score#,#opendate#,#director#,#actor#,#genre_id#,#synopsis#,#stilcut#,#video#,#grade_id#)
+	</insert>
+	
+	<delete id="deleteById" parameterClass="int">
+		DELTE FROM MOVIE_INFO WHERE MOVIE_ID = #movie_id#
+	</delete>
+	
+	<delete id="deleteByName" parameterClass="String">
+		DELTE FROM MOVIE_INFO WHERE MOVIE_NAME = #movie_name#
+	</delete>
+	
+</sqlMap>

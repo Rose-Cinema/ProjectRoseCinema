@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="ticket">
+	<typeAlias alias="ticketDTO" type="rose.dto.TicketDTO"/>
+	
+	<resultMap class="rose.dto.TicketDTO" id="ticketResultMap">
+		<result property="ticketID" column="TICKETID" nullValue="0"/>
+		<result property="no" column="NO" nullValue="0"/>
+		<result property="screenID" column="SCREENID" nullValue="0"/>
+		<result property="memberID" column="MEMBERID" nullValue="0"/>
+		<result property="mcardID" column="MCARDID" nullValue="0"/>
+		<result property="couponID" column="COUPONID" nullValue="0"/>
+		<result property="movie" column="MOVIE" nullValue="UnKnown"/>
+		<result property="theater" column="THEATER" nullValue="UnKnown"/>
+		<result property="screen" column="SCREEN" nullValue="UnKnown"/>
+		<result property="ticketDate" column="TICKETDATE" nullValue=""/>
+		<result property="count" column="COUNT" nullValue="0"/>
+		<result property="seat1" column="SEAT1" nullValue="UnKnown"/>
+		<result property="seat2" column="SEAT2" nullValue="UnKnown"/>
+		<result property="seat3" column="SEAT3" nullValue="UnKnown"/>
+		<result property="seat4" column="SEAT4" nullValue="UnKnown"/>
+		<result property="seat5" column="SEAT5" nullValue="UnKnown"/>
+		<result property="seat6" column="SEAT6" nullValue="UnKnown"/>
+		<result property="seat7" column="SEAT7" nullValue="UnKnown"/>
+		<result property="seat8" column="SEAT8" nullValue="UnKnown"/>
+		<result property="buyDate" column="BUYDATE" nullValue="1111/11/11 11:11:11"/>
+		<result property="buySum" column="BUYSUM" nullValue="UnKnown"/>
+		<result property="buyType" column="BUYTYPE" nullValue="UnKnown"/>
+		<result property="phone" column="PHONE" nullValue="UnKnown"/>
+		<result property="isCancel" column="ISCANCEL" nullValue="UnKnown"/>
+		<result property="cancelDate" column="CANCELDATE" nullValue="1111/11/11 11:11:11"/>
+	</resultMap>
+	
+	<insert id="insertTicket" parameterClass="ticketDTO"> 
+		INSERT INTO TICKET_INFO VALUES(TICKET_ID_SEQ.NEXTVAL,#no#,#screenID#,#memberID#,#mcardID#,#couponID#,#movie#,#theater#,#screen#,#ticketDate#,#count#,#seat1#,#seat2#,#seat3#,#seat4#,#seat5#,#seat6#,#seat7#,#seat8#,#buyDate#,#buySum#,#buyType#,#phone#,#isCancel#,#cancelDate#)
+	</insert>
+	
+	<delete id="deleteTicket" parameterClass="String">
+		DELETE FROM TICKET_INFO WHERE TICKETID = #ticketID#
+	</delete>
+	
+	<update id="updateIsCancel" parameterClass="String">	
+		UPDATE TICKET_INFO SET ISCANCEL = 'YES', CANCELDATE = SYSDATE WHERE NO = #no#  
+	</update>
+	
+	<update id="updateInputData" parameterClass="java.util.HashMap">
+		UPDATE TICKET_INFO SET $COLUMN$ = #VALUE# WHERE TICKETID = #TICKETID#
+	</update>
+	
+	<select id="selectAllTicket" resultMap="ticket.ticketResultMap">
+		SELECT * FROM TICKET_INFO
+	</select>
+	
+	<select id="selectTicketList" resultClass="ticketDTO" parameterClass="int">
+		SELECT * FROM TICKET_INFO WHERE MEMBERID = #memberID#
+	</select>
+	
+	<select id="selectTicketByNo" resultClass="ticketDTO" parameterClass="String">
+		SELECT * FROM TICKET_INFO WHERE NO = #no#
+	</select>
+	
+	<select id="selectTicketById" resultClass="ticketDTO" parameterClass="int">
+		SELECT * FROM TICKET_INFO WHERE TICKETID = #ticketID#
+	</select>
+	
+	<select id="selectLastTicketIDSEQ" resultClass="int">
+		    SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = UPPER('TICKET_ID_SEQ')
+	</select>
+	
+
+
+	
+
+	
+	
+</sqlMap>

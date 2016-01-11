@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="theaters">
+	
+	<typeAlias alias="Theater" type="rose.dto.TheaterDTO"/>
+	<!-- Select All -->
+	<select id="getTheaterList" resultClass="Theater" >
+		select * from THEATER_INFO
+	</select>
+	<!-- Select with area_id -->
+	<select id="getTheaterInfo" resultClass="Theater" parameterClass="int">
+		select * from THEATER_INFO where theater_id = #id#
+	</select>
+	
+</sqlMap>

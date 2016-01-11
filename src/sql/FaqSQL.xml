@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="faq">
+	<typeAlias alias="FAQ" type="rose.dto.FaqDTO"/>
+	
+	<!-- Select All -->
+	<select id="getAllFaqList" resultClass="FAQ" >
+		select * from FAQ
+	</select>
+	
+	<insert id="insertFaq" parameterClass="Faq">
+		INSERT INTO FAQ VALUES (FAQ_IDX_SEQ.NEXTVAL, #faqType#, #faqTitle#, #faqContent#)
+	</insert>
+	
+	<select id="getLastIDX" resultClass="int">
+		SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = UPPER('FAQ_IDX_SEQ')
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="genre">
+	<typeAlias alias="Genre" type="rose.dto.GenreDTO"/>
+	
+	<!-- Select All -->
+	<select id="getAllGenreList" resultClass="Genre">
+		SELECT * FROM GENRE_TYPE
+	</select>
+	
+	<select id="getAllIdList" resultClass="int">
+		SELECT GENRE_ID FROM GENRE_TYPE
+	</select>
+	
+	<select id="getAllNameList" resultClass="String">
+		SELECT GENRE_NAME FROM GENRE_TYPE
+	</select>
+	
+	<select id="getGenreById" resultClass="Genre" parameterClass="int">
+		SELECT * FROM GENRE_TYPE WHERE GENRE_ID = #genre_id#
+	</select>
+	
+	<select id="getGenreByName" resultClass="Genre" parameterClass="String">
+		SELECT * FROM GENRE_TYPE WHERE GENRE_NAME = #genre_name#
+	</select>
+	
+	<select id="getIdByName" resultClass="int" parameterClass="String">
+		SELECT GENRE_ID FROM GENRE_TYPE WHERE GENRE_NAME = #genre_name#
+	</select>
+	
+	<select id="getNameById" resultClass="String" parameterClass="int">
+		SELECT GENRE_NAME FROM GENRE_TYPE WHERE GENRE_ID = #genre_id#
+	</select>
+	
+	<insert id="insertGenre" parameterClass="Genre">
+		INSERT INTO GENRE_TYPE VALUES (#genre_id#, #genre_name#)
+	</insert>
+	
+	<update id="updateName" parameterClass="Genre">
+		UPDATE GENRE_TYPE SET GENRE_NAME = #genre_name# WHERE GENRE_ID = #genre_id#
+	</update>
+	
+	<delete id="deleteById" parameterClass="int">
+		DELETE FROM GENRE_TYPE WHERE GENRE_ID = #genre_id#
+	</delete>
+	
+	<delete id="deleteByName" parameterClass="String">
+		DELETE FROM GENRE_TYPE WHERE GENRE_NAME = #genre_name#
+	</delete>
+	
+</sqlMap>
