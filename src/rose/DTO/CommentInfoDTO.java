@@ -1,14 +1,24 @@
 package rose.DTO;
 
+import java.sql.Timestamp;
+
 public class CommentInfoDTO {
 
 	private int comment_id;
 	private int movie_id;
-	private int member_id;
+	private String id;
 	private String content;
 	private int score;
 	private int recommend;
+	private Timestamp reg_date;
 	
+	
+	public Timestamp getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
+	}
 	public int getComment_id() {
 		return comment_id;
 	}
@@ -21,11 +31,13 @@ public class CommentInfoDTO {
 	public void setMovie_id(int movie_id) {
 		this.movie_id = movie_id;
 	}
-	public int getMember_id() {
-		return member_id;
+	
+	
+	public String getId() {
+		return id;
 	}
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getContent() {
 		return content;

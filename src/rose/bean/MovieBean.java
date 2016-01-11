@@ -44,6 +44,7 @@ public class MovieBean {
 	
 	@RequestMapping("/movie/movieinsert.do")
 	public ModelAndView insert(MultipartHttpServletRequest multi)throws Exception{
+		System.out.println("여기까지");
 		MovieInfoDTO dto = new MovieInfoDTO();	
 		dto.setMovie_name(multi.getParameter("movie_name"));
 		dto.setOpendate(multi.getParameter("opendate"));
@@ -61,6 +62,7 @@ public class MovieBean {
 		String simg = ""; 
 		int fileNum = 1;
 		
+		System.out.println("여기까지2");
 		while(files.hasNext()){
 			String fn = (String)files.next();
 			MultipartFile file = multi.getFile(fn);
@@ -70,21 +72,26 @@ public class MovieBean {
 			String sysName = "file_"+mid+"_"+fileNum+"."+file_ext;  // ex) file_1_1.jpg
 			if(fn.equals("video")){
 				dto.setVideo(sysName);
+				String path2 = multi.getRealPath("movie//video//");
+				File copyFile2 = new File(path2+"//"+sysName);
+				file.transferTo(copyFile2);
+				fileNum++;
 			}else if(fn.equals("movie_image")){
 				dto.setMovie_image(sysName);
+				String path = multi.getRealPath("movie//movie_image//");
+				File copyFile2 = new File(path+"//"+sysName);
+				file.transferTo(copyFile2);
+				fileNum++;
 			}else{
 				simg += sysName+",";
+				String path1 = multi.getRealPath("movie//stilcut//");
+				File copyFile1 = new File(path1+"//"+sysName);
+				file.transferTo(copyFile1);
+				fileNum++;
 			}
-			String path = multi.getRealPath("movie//movie_image//");
-			System.out.println("================="+path);
-			File copyFile = new File(path+"//"+sysName);
-			file.transferTo(copyFile);
-			fileNum++;
 		}
 		dto.setStilcut(simg);
-		
 		sqlMapClient.update("movie.fileUp", dto);
-
 		ModelAndView mv = new ModelAndView ();
 		mv.setViewName("/movie/movieinsert.jsp");
 	
@@ -105,22 +112,15 @@ public class MovieBean {
 	public ModelAndView content(int movie_id)throws Exception{
 		
 		MovieInfoDTO dto  = (MovieInfoDTO)sqlMapClient.queryForObject("movie.contentMovie", movie_id);
+		List commentList  = sqlMapClient.queryForList("comment.getCommentList", movie_id);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("dto" , dto);
+		mv.addObject("commentList" , commentList);
 		mv.setViewName("/movie/moviecontent.jsp");
 		return mv;
 	}
 	
-	@RequestMapping("/movie/comment.do")
-	public ModelAndView comment(HttpServletRequest request)throws Exception{
-		request.setCharacterEncoding("UTF-8");
-		String str = request.getParameter("score");
-		String comment = request.getParameter("comment");
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/movie/moviecontent.jsp");
-		return mv;
-	}
+
 }	
 	
 

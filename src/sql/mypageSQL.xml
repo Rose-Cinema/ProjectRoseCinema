@@ -5,6 +5,36 @@
    <typeAlias alias="dto" type="rose.DTO.MemberInfoDTO"/>   
    <typeAlias alias="pointDTO" type="rose.DTO.MpointHistoryDTO"/>
    <typeAlias alias="mgradeDTO" type="rose.DTO.MgradeHistoryDTO"/>
+   <typeAlias alias="mcardDTO" type="rose.DTO.McardInfoDTO"/>
+	
+		<resultMap class="rose.DTO.TicketDTO" id="ticketResultMap">
+		<result property="ticketID" column="TICKETID" nullValue="0"/>
+		<result property="no" column="NO" nullValue="0"/>
+		<result property="screenID" column="SCREENID" nullValue="0"/>
+		<result property="memberID" column="MEMBERID" nullValue="0"/>
+		<result property="mcardID" column="MCARDID" nullValue="0"/>
+		<result property="couponID" column="COUPONID" nullValue="0"/>
+		<result property="movie" column="MOVIE" nullValue="UnKnown"/>
+		<result property="theater" column="THEATER" nullValue="UnKnown"/>
+		<result property="screen" column="SCREEN" nullValue="UnKnown"/>
+		<result property="ticketDate" column="TICKETDATE" nullValue=""/>
+		<result property="count" column="COUNT" nullValue="0"/>
+		<result property="seat1" column="SEAT1" nullValue="UnKnown"/>
+		<result property="seat2" column="SEAT2" nullValue="UnKnown"/>
+		<result property="seat3" column="SEAT3" nullValue="UnKnown"/>
+		<result property="seat4" column="SEAT4" nullValue="UnKnown"/>
+		<result property="seat5" column="SEAT5" nullValue="UnKnown"/>
+		<result property="seat6" column="SEAT6" nullValue="UnKnown"/>
+		<result property="seat7" column="SEAT7" nullValue="UnKnown"/>
+		<result property="seat8" column="SEAT8" nullValue="UnKnown"/>
+		<result property="buyDate" column="BUYDATE" nullValue="1111/11/11 11:11:11"/>
+		<result property="buySum" column="BUYSUM" nullValue="UnKnown"/>
+		<result property="buyType" column="BUYTYPE" nullValue="UnKnown"/>
+		<result property="phone" column="PHONE" nullValue="UnKnown"/>
+		<result property="isCancel" column="ISCANCEL" nullValue="UnKnown"/>
+		<result property="cancelDate" column="CANCELDATE" nullValue="1111/11/11 11:11:11"/>
+	</resultMap>
+
   
   
    <select id="userCheck" resultClass="int" parameterClass="dto">
@@ -35,14 +65,43 @@
     </select>
     
     
-    <!-- 
-    <select id="mpointhistory" resultClass="pointDTO" parameterClass="pointDTO">
-    	select * from MPOINT_HISTORY where member_id = #memNum#
-    </select> 포인트 내역 게시판 형태로 불러오기, memNum은 히든으로 넘겨주기   -->
+    <insert id="memcard" parameterClass="mcardDTO">
+    	insert into MCARD_INFO (mcard_id, member_id, isactive, mcard_name) values(#mcard_id#,#member_id#,#isactive#,#mcard_name#)
+    </insert>  
+       
+       
+    <select id="memcardinfo" resultClass="mcardDTO" parameterClass="String">
+    	select * from mcard_info where member_id = #memNum#
+    </select> 
     
     
+    <delete id="memcarddel" parameterClass="mcardDTO" >
+       delete from mcard_info where mcard_id = #mcard_id#
+    </delete> 
     
     
+	<!-- 
+	<select id="myTicketAfter" resultMap="ticket.ticketResultMap" parameterClass="int">
+		<![CDATA[ SELECT * FROM TICKET_INFO WHERE memberid = #memNum# and ticketdate > sysdate]]>
+	</select>  볼예정인 내영화내역 -->
+	
+	
+	<select id="myTicket" resultMap="mypage.ticketResultMap" parameterClass="int">
+		SELECT * FROM TICKET_INFO WHERE MEMBERID = #memNum#
+	</select> <!-- 모든 내영화내역 -->
+	
+	
+	<!-- 
+    <select id="myTicketBefore" resultClass="ticketDTO" parameterClass="java.util.HashMap">
+		<![CDATA[ SELECT * FROM TICKET_INFO WHERE memberid = #memNum# and ticketdate > sysdate]]>
+	</select>  최근 1개월 봤던 영화내역 -->
+	
+	
+	<!-- 
+	<select id="myTicketCancel" resultClass="ticketDTO" parameterClass="java.util.HashMap">
+		SELECT * FROM TICKET_INFO WHERE MEMBERID = #memberID# and 
+	</select> 취소 영화내역 -->
+	
         
    
 </sqlMap> 

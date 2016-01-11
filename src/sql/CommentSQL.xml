@@ -4,13 +4,13 @@
 
 	<typeAlias alias="comment" type="rose.DTO.CommentInfoDTO"/>
 	
-	<select id="commentinsert" parameterClass="comment">
-		insert into comment_info(comment_id,movie_id,member_id,content,score,recommend)
-		values(comment_id_SEQ.NEXTVAL,#movie_id#,#member_id#,#content#,#score#,#recommend#)
-	</select>
+	<insert id="commentinsert" parameterClass="comment">
+		insert into comment_info(comment_id,movie_id,id,content,score)
+		values(comment_id_SEQ.NEXTVAL,#movie_id#,#id#,#content#,#score#)
+	</insert>
 	
-	<select id="getCommentList" resultClass="comment" >
-		select * from Comment_INFO where comment_id=#comment_id#
+	<select id="getCommentList" resultClass="comment" parameterClass="int">
+		select * from Comment_INFO where movie_id=#movie_id#
 	</select>
 	
 	

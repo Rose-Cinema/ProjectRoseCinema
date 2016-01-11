@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<font size="5">ÄíÆùÅ¸ÀÔ Å×ÀÌºí</font>
+<font size="5">ì¿ í°íƒ€ìž… í…Œì´ë¸”</font>
 
 <form action="/RoseCinema/couponTypePro" method="post">
 	<table border="1">
 		<tr>
-			<td>ÄíÆùÅ¸ÀÔ¸í</td>
+			<td>ì¿ í°íƒ€ìž…ëª…</td>
 			<td>
 				<input type="text" name="coupon_name">
 			</td>
 			<td>
-				<input type="submit" value="µî·Ï">
+				<input type="submit" value="ë“±ë¡">
 			</td>
 		</tr>
 	</table>

@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <body>
 <form>ÄíÆù ¸®½ºÆ®</form>
 <table border="1">
 	<tr>
-		<td>ÄíÆùÀÌ¸§</td>
-		<td>ÄíÆù¹øÈ£</td>
-		<td>À¯È¿±â°£</td>
-		<td>»ç¿ë³¯Â¥</td>
+		<td>ì¿ í°ì´ë¦„</td>
+		<td>ì¿ í°ë²ˆí˜¸</td>
+		<td>ìœ íš¨ê¸°ê°„</td>
+		<td>ì‚¬ìš©ë‚ ì§œ</td>
 	<c:forEach var="couponDTO" items="${couponlist }">
 		<tr>
 			<td>${couponDTO.coupon_name }</td>

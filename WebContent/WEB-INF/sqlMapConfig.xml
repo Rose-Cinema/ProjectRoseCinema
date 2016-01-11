@@ -14,6 +14,8 @@
 	<sqlMap resource="/sql/MovieSQL.xml"/>
 	<sqlMap resource="/sql/EventSQL.xml"/>
 	<sqlMap resource="/sql/CommentSQL.xml"/>
+	<sqlMap resource="/sql/ticketSQL.xml"/>
+	<sqlMap resource="/sql/screenSQL.xml"/>
 
 </sqlMapConfig>
 
