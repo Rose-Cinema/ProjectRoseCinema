@@ -68,7 +68,7 @@ public class TicketInfoBean {
 	
 	@RequestMapping("/ticket/{timeTable}")
 	public String ticket(@PathVariable String timeTable) {
-		return "test";
+		return "/ticket/ticket.jsp";
 	}
 	
 /*	@RequestMapping("/getTicketList")

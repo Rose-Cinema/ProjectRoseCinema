@@ -10,6 +10,7 @@
 $(document).ready(function() {
 	getNextTicketID();
 	selectAllScreenID();
+	selectAllMemberID();
 })
 
 function getNextTicketID() {
@@ -22,10 +23,25 @@ function getNextTicketID() {
 		dataType:"JSON",
 		
 		success:function(result) {
-			alert(result);
 			$('#TICKETID').val(result);
 		}
-	})
+	});
+}
+
+function selectTheaterNameByScreenID(inputData) {
+	var screen_id = inputData.value;
+	$.ajax({
+		url:"/RoseCinema/selectTheaterNameByScreenID/"+screen_id,
+		type:"GET",
+		date:"",
+		cache:false,
+		async:false,
+		dataType:"JSON",
+		
+		success:function(result) {
+			$('#THEATER').val(result);
+		}
+	});
 }
 	
 function insertTicket(ticket) {
@@ -53,7 +69,6 @@ function selectAllScreenID() {
 		dataType:"JSON",
 		
 		success:function(result) {
-
 			$.each(result, function(key,value) {
 				$("#SCREENID").append("<option value=\""+value+"\">"+value+"</option>");
 			});
@@ -61,6 +76,25 @@ function selectAllScreenID() {
 		}
 	});
 }
+
+function selectAllMemberID() {
+	$.ajax({
+		url:"/RoseCinema/selectAllMemberID",
+		type:"POST",
+		data:"",
+		cache:false,
+		async:false,
+		dataType:"JSON",
+		
+		success:function(result) {
+			$.each(result, function(key, value) {
+				$("#MEMBERID").append("<option value=\""+value+"\">"+value+"</option>");
+			});
+		}
+	});
+}
+
+
 	
 
 
@@ -71,7 +105,7 @@ function selectAllScreenID() {
 		<table id="insertTicketTable" border="3">
 			<tr>
 				<td>TICKETID</td>
-				<td><input type="text" id="TICKETID"></td>
+				<td><input type="text" id="TICKETID" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td>No</td>
@@ -80,12 +114,12 @@ function selectAllScreenID() {
 			<tr>
 				<td>SCREENID</td>
 				<td>
-					<select id=SCREENID></select>
+					<select id=SCREENID onchange="selectTheaterNameByScreenID(this)"></select>
 				</td>
 			</tr>
 			<tr>
 				<td>MEMBERID</td>
-				<td id="tdMEMBERID"></td>
+				<td><select id=MEMBERID></select></td>
 			</tr>
 			<tr>
 				<td>MCARDID</td>
@@ -101,7 +135,7 @@ function selectAllScreenID() {
 			</tr>
 			<tr>
 				<td>THEATER</td>
-				<td id="tdTHEATER"></td>
+				<td><input type="text" id="THEATER" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td>SCREEN</td>

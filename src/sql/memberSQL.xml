@@ -62,5 +62,8 @@
     </select>
 	-->
     
-   
+	<!--SAMARA907 -->
+   <select id="selectAllMemberID" resultClass="int">
+   	SELECT MEMBER_ID FROM MEMBER_INFO
+   </select>
 </sqlMap> 
