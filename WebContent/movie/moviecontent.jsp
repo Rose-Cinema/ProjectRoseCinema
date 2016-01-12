@@ -34,6 +34,16 @@ textarea {width:500px; height:80px; overflow:visible;}
 	</script>
 </script>
 
+<script type="text/javascript">
+
+$(document).ready(function(){
+	  $('.imagebox').bxSlider({
+	  auto: true,
+	  autoControls: true
+	  });
+	});
+
+</script>
 
 <body>
 <table border="0" width="700" align="center">
@@ -83,8 +93,11 @@ textarea {width:500px; height:80px; overflow:visible;}
 	
 	<tr>
 		<td colspan="3" height="300" class="line03"><b>스틸컷</b><br/>
+				
 		<c:forTokens var="stil" items="${dto.stilcut}" delims=",">
-			<img src="/RoseCinema/movie/stilcut/${stil}">
+		<ul class="imagebox">
+			<li><img src="/RoseCinema/movie/stilcut/${stil}"></li> 
+		</ul>
 		</c:forTokens> 
 		
 		
