@@ -14,13 +14,11 @@
 <script type="text/javascript">
 </script>
 
-<!--지역/도시 선택 -->
-<p>---------------------------------</p>
+<!-- 극장 선택 -->
 <jsp:include page="select_cities.jsp"/>
 
 <!-- 영화관 정보 -->
 <div>
-<p>---------------------------------</p>
 <p>극장 이름 : ${theater_name }</p>
 <p>주소 : ${adress }</p>
 <p>전화번호 : ${phone }</p>
@@ -28,7 +26,6 @@
 <p>총 좌석 수 : ${total_seats }</p>
 </div>
 
-<p>---------------------------------</p>
 <jsp:include page="${view_type }.jsp"/>
 
 
