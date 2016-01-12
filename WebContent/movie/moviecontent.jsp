@@ -17,7 +17,7 @@ textarea {width:500px; height:80px; overflow:visible;}
 <link href='/RoseCinema/resource/jquery.rating.css' type="text/css" rel="stylesheet"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
 </head>
-	<script>
+<script type="text/javascript">
 	$(function(){
 	 $('.hover-star').rating({
 	  focus: function(value, link){
@@ -31,19 +31,15 @@ textarea {width:500px; height:80px; overflow:visible;}
 	  }
 	 });
 	});
-	</script>
+	
+	$(document).ready(function(){
+		  $('.imagebox').bxSlider({
+		  auto: true,
+		  autoControls: true
+		  });
+	})
 </script>
 
-<script type="text/javascript">
-
-$(document).ready(function(){
-	  $('.imagebox').bxSlider({
-	  auto: true,
-	  autoControls: true
-	  });
-	});
-
-</script>
 
 <body>
 <table border="0" width="700" align="center">
@@ -158,9 +154,6 @@ $(document).ready(function(){
 	</div>
 	</td>
 	</tr>
-
-
-
 </table>
 </body>
 </html>

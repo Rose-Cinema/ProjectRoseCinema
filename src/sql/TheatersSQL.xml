@@ -28,4 +28,9 @@
 		update THEATER_INFO set IMAGE = #image# where THEATER_ID = #theater_id#
 	</update>
 	
+	
+	<!-- SAMARA907 -->
+	<select id="selectTheaterNameByScreenID" parameterClass="String" resultClass="String">
+		SELECT THEATER_INFO.THEATER_NAME FROM THEATER_INFO , SCREEN_INFO  WHERE THEATER_INFO.THEATER_ID=SCREEN_INFO.THEATER_ID AND SCREEN_INFO.SCREEN_ID=#screen_id#
+	</select>
 </sqlMap>

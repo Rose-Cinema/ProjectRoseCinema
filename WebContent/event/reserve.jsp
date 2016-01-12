@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-한줄평 등록 완료
+
 </body>
 </html>

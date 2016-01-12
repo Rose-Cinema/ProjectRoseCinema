@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-한줄평 등록 완료
+
+<iframe name="top" width=1100 height=100 src="./top" frameborder="0"> </iframe>
+<iframe name="body" width=1100 height=2000 src="./eventMain"frameborder="0"> </iframe>    
+<iframe name="bottom" width=1100 height=200 src="./bottom"frameborder="0"> </iframe>
 </body>
 </html>
