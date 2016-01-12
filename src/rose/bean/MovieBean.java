@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -118,6 +120,14 @@ public class MovieBean {
 		mv.addObject("commentList" , commentList);
 		mv.setViewName("/movie/moviecontent.jsp");
 		return mv;
+	}
+	
+	//SAMARA907
+	@RequestMapping("/selectAllMovieName")
+	@ResponseBody
+	public List<String> selectAllMovieName() {
+		List<String> MovieNameList = (List<String>)sqlMapClient.queryForList("movie.selectAllMovieName", null);
+		return MovieNameList;
 	}
 	
 
