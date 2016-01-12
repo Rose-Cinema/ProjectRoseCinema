@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 
 <head>
-<title>상영관 안내, 장미극장의 특별관 입니다.</title>
+<title>3D 상영관 안내, 장미극장의 특별관 입니다.</title>
 </head>
 
 <%-- 부트스트랩, jquery --%>
@@ -16,10 +16,12 @@
 
 <div class="col-xs-12">
 <ul class="nav nav-pills">
-	<li role="presentation"><a href="/RoseCinema/screens/special/3D">3D</a></li>
+	<li role="presentation" class="active"><a href="/RoseCinema/screens/special/3D">3D</a></li>
 	<li role="presentation"><a href="/RoseCinema/screens/special/4D">4D</a></li>
 	<li role="presentation"><a href="/RoseCinema/screens/special/IMAX">IMAX</a></li>
 </ul>
 </div>
+
+3D 설명 페이지
 
 </html>

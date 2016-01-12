@@ -19,8 +19,9 @@ function initialize() {
 		title : "${theater_name}"
 	});
 	var infowindow = new google.maps.InfoWindow({
-		content : "<p>${theater_name}</p>"
-					+"<p>${adress}</p>",
+		content : "<p><b>${theater_name}</b></p>"
+			+"<p>${adress}</p>"
+			+"<p>${phone}</p>",
 		maxWidth : 300
 	});
 
