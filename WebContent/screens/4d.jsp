@@ -28,5 +28,4 @@
 <img src="http://img.cgv.co.kr/R2014/images/sub/specialtheater/fordx/fordx_02.jpg"/>
 </div>
 
-
 </html>

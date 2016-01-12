@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="mcard">
+	<typeAlias alias="mcardDTO" type="rose.DTO.McardInfoDTO"/>
+	
+	<select id="selectMcardIDByMemberID"  parameterClass ="int" resultClass="int">
+		SELECT MCARD_ID FROM MCARD_INFO WHERE MEMBER_ID=#MEMBER_ID#
+	</select>
+
+</sqlMap>
