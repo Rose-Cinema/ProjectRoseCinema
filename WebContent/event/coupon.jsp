@@ -4,8 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <font size="5">쿠폰 테이블</font>
 <form action="/RoseCinema/couponPro" method="post">
-	<table border="1">
+	<table border="1" align="center">
 		<tr>
+
 			<td>쿠폰번호</td>
 		    <td><input type="text" name="coupon_id"></td>
 			<td>쿠폰이름</td>
@@ -26,9 +27,20 @@
 				</c:forEach>
 			</select>
 			</td>
+
+		</tr>
+		<tr>
+			
+
 			<td>발행수</td>
+
 			<td><input type="number" name="coupon_count"></td>
+
+		</tr>
+		<tr>
+			
 			<td>등급</td>
+
 			<td><input type="text" name="mgrade_id"></td>
 		</tr>
 		<tr>
