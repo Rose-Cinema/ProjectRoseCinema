@@ -6,21 +6,12 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
-<<<<<<< HEAD
+
 
 
 
 
 <nav class="navbar navbar-default navbar-static-top">
-	<div class="container-fluid">
-		<ul class="nav navbar-nav">
-			<li><a href="/RoseCinema/eventMain">ÀüÃ¼ ÀÌº¥Æ®</a></li>
-			<li><a href="/RoseCinema/">·ÎÁî½Ã³×¸¶ ÀÌº¥Æ®</a></li>
-			<li><a href="/RoseCinema/">¿µÈ­¿¹¸Å ÀÌº¥Æ®</a></li>
-			<li><a href="/RoseCinema/">¹«´ëÀÎ»ç</a></li>
-			<li><a href="/RoseCinema/">´çÃ·ÀÚ ¹ßÇ¥</a></li>
-=======
-<nav class="navbar navbar-default ">
   <div class="container">
    	<ul class="nav navbar-nav">
 			<li><a href="/RoseCinema/eventMain">ì „ì²´</a></li>
@@ -28,7 +19,6 @@
 			<li><a href="/RoseCinema/">ì˜í™”ì˜ˆë§¤</a></li>
 			<li><a href="/RoseCinema/">ë¬´ëŒ€ì¸ì‚¬</a></li>
 			<li><a href="/RoseCinema/">ë‹¹ì²¨ì ë°œí‘œ</a></li>
->>>>>>> branch 'base_branch' of https://github.com/Rose-Cinema/ProjectRoseCinema.git
 	</ul>
   </div>
 </nav>
@@ -36,7 +26,6 @@
 	<iframe name="top" width=1100 height=1000 src="./eventList" frameborder="0"> 
 
 
-<<<<<<< HEAD
 
 
 <!-- Button trigger modal -->
@@ -61,7 +50,7 @@
       </div>
     </div>
   </div>
-=======
+
 <div class="sub_depth2">
 	<ul>
 		<li><a href="" class="active">ì§„í–‰ì¤‘ ì´ë²¤íŠ¸</a></li>
@@ -70,13 +59,12 @@
 </div>
 <div>
 <h1>RoseCinema <small>ë¡œì¦ˆì‹œë„¤ë§ˆ</small></h1>
->>>>>>> branch 'base_branch' of https://github.com/Rose-Cinema/ProjectRoseCinema.git
+
 </div>
 
 
 
-<<<<<<< HEAD
-=======
+
 <form action="/RoseCinema/" method="post">
 	<table border="1">
 		<tr>
@@ -86,4 +74,3 @@
 		
 	</table>
 </form>
->>>>>>> branch 'base_branch' of https://github.com/Rose-Cinema/ProjectRoseCinema.git

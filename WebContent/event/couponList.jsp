@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <body>
-<form>ÄíÆù ¸®½ºÆ®</form>
+<form>
 <table border="1">
 	<tr>
 		<td>ì¿ í°ì´ë¦„</td>
@@ -20,3 +20,4 @@
 	</c:forEach>
 </table>
 </body>
+</form>

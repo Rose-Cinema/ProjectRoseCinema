@@ -6,14 +6,10 @@
 <form action="/RoseCinema/couponPro" method="post">
 	<table border="1" align="center">
 		<tr>
-<<<<<<< HEAD
-			
-			<td>ÄíÆùÀÌ¸§</td>
-=======
+
 			<td>ì¿ í°ë²ˆí˜¸</td>
 		    <td><input type="text" name="coupon_id"></td>
 			<td>ì¿ í°ì´ë¦„</td>
->>>>>>> branch 'base_branch' of https://github.com/Rose-Cinema/ProjectRoseCinema.git
 		 	<td><input type="text" name="coupon_name"></td>
 		</tr>
 		<tr>
@@ -31,21 +27,20 @@
 				</c:forEach>
 			</select>
 			</td>
-<<<<<<< HEAD
+
 		</tr>
 		<tr>
-			<td>¹ßÇà¼ö</td>
-=======
+			
+
 			<td>ë°œí–‰ìˆ˜</td>
->>>>>>> branch 'base_branch' of https://github.com/Rose-Cinema/ProjectRoseCinema.git
+
 			<td><input type="number" name="coupon_count"></td>
-<<<<<<< HEAD
+
 		</tr>
 		<tr>
-			<td>µî±Ş</td>
-=======
+			
 			<td>ë“±ê¸‰</td>
->>>>>>> branch 'base_branch' of https://github.com/Rose-Cinema/ProjectRoseCinema.git
+
 			<td><input type="text" name="mgrade_id"></td>
 		</tr>
 		<tr>
