@@ -6,24 +6,32 @@
 
 </head>
 
-<%-- 부트스트랩, jquery --%>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<%-- 내부 스크립트 --%>
+<jsp:include page="/top_nav.jsp"/>
 <script type="text/javascript">
 </script>
 
+<!-- 
+<ol class="breadcrumb">
+  <li><a href="/RoseCinema">로즈 시네마</a></li>
+  <li><a href="/RoseCinema/theaters/main">극장</a></li>
+  <li class="active">${theater_name }</li>
+</ol>
+ -->
 <!-- 극장 선택 -->
 <jsp:include page="select_cities.jsp"/>
 
+
 <!-- 영화관 정보 -->
 <div class="col-xs-10">
-<p>극장 이름 : ${theater_name }</p>
-<p>주소 : ${adress }</p>
-<p>전화번호 : ${phone }</p>
-<p>총 스크린 수 : ${total_screen }</p>
-<p>총 좌석 수 : ${total_seats }</p>
+	<div class="thumbnail">
+		<img src="/RoseCinema/theaters/image/${theater_id }.jpg"/>
+		<div class="caption">
+			<p>${theater_name }</p>
+			<p>${adress }</p>
+			<p>${phone }</p>
+			<p>${total_screen }관 / ${total_seats }석</p>
+		</div>
+	</div>
 </div>
 
 <jsp:include page="${view_type }.jsp"/>

@@ -4,6 +4,8 @@
 <%@ include file="/view/color.jsp"%>
 <html>
 <head>
+<jsp:include page="/top_nav.jsp"/>
+
 <title>회원정보수정페이지</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript">

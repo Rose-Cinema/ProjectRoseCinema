@@ -4,6 +4,7 @@
 <title>영화 업로드</title>
 <html>
 <head>
+<jsp:include page="/admin/top_nav.jsp"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script>

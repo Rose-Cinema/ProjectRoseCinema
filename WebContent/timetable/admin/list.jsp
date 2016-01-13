@@ -2,9 +2,10 @@
 
 <title>상영 시간표 상세 정보</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<jsp:include page="/admin/top_nav.jsp"/>
+<script type="text/javascript">
+</script>
+
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -110,8 +111,32 @@ function addTimetable(){
 
 </script>
 
+<div class="page-header">
+	<h2>상영시간표 관리</h2>
+</div>
+
 <div class="col-xs-10">
 	<table class="table">
+		<thead>
+			<tr class="success">
+	    		<th colspan="3"><h4>새로 등록하기</h4></th>
+	    	</tr>
+		</thead>
+		<tr>
+			<td>
+				<button type='button' class='btn btn-success' onClick="return addTimetable();"><b>새 정보 추가</b></button>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="col-xs-10">
+	<table class="table">
+		<thead>
+			<tr class="success">
+	    		<th colspan="3"><h4>극장 및 시간 선택</h4></th>
+	    	</tr>
+		</thead>
 		<tr>
 			<td>
 				<select class="form-control" id="theater_list">
@@ -125,13 +150,15 @@ function addTimetable(){
 			</td>
 			<td>
 				<button type='button' class='btn btn-default' onClick="return getTimetableData();">조회</button>
-				<button type='button' class='btn btn-success' onClick="return addTimetable();">새 정보 추가</button>
 			</td>
 		</tr>
 	</table>
 	
 	<table class="table">
 		<thead>
+			<tr class="success">
+	    		<th colspan="3"><h4>상영 시간표</h4></th>
+	    	</tr>
 			<tr>
 				<th scope="col" style="width: 25%;">상영작</th>
 				<th scope="col" style="width: 25%;">상영관</th>

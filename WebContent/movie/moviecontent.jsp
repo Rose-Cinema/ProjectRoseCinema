@@ -11,6 +11,8 @@ textarea {width:500px; height:80px; overflow:visible;}
 </style>
 
 <head>
+<jsp:include page="/top_nav.jsp"/>
+
 <script src='/RoseCinema/resource/jquery.js' type="text/javascript"></script>
 <script src='/RoseCinema/resource/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
 <script src='/RoseCinema/resource/jquery.rating.js' type="text/javascript" language="javascript"></script>
