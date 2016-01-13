@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -24,7 +25,13 @@
 <c:if test="${sessionScope.logincheck == 1}">
 	check값: ${sessionScope.logincheck}
 	<br/>
-	<h2>${sessionScope.memId} 님이 접속했습니다.! &nbsp; &nbsp; &nbsp; &nbsp;   이름: ${sessionScope.memName}, 회원넘버: ${memNum}  </h2> 
+	<h2> ${sessionScope.memName}님이 접속했습니다!<br/>
+	회원 아이디: ${sessionScope.memId}  <!-- 회원넘버: ${memNum} -->  
+	</h2> 
+	<a href="/RoseCinema/logout">
+							로그아웃</a>
+
+	
 	<hr>
 	회원정보수정, 회원탈퇴<-- 나중에 mypageForm.jsp에 이 a태그 갖다 붙이기!!!!  <br/>
 	<a href="/RoseCinema/modifyForm">회원정보수정</a>
@@ -38,8 +45,7 @@
 	<a href="/RoseCinema/deleteForm">회원탈퇴</a>
 	
 	
-	<a href="/RoseCinema/logout">
-							로그아웃</a>
+	
 	
 	
 	<hr>

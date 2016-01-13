@@ -31,7 +31,7 @@
   <servlet-mapping>
   	<servlet-name>spring</servlet-name>
   	<url-pattern>/</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
   
   <servlet-mapping>
     <servlet-name>default</servlet-name>
@@ -44,5 +44,6 @@
     <url-pattern>*.swf</url-pattern>
     <url-pattern>*.mp4</url-pattern>
 </servlet-mapping>
+
   
 </web-app>

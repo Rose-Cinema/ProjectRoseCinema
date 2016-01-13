@@ -44,4 +44,13 @@
 		delete from TIMETABLE where TIMTETABLE_ID=#timetable_id#
 	</delete>
 	
+	<!-- SAMARA907 -->
+	<select id="selectAllTimetable" resultClass="Timetable">
+		SELECT * FROM TIMETABLE
+	</select>
+	<!-- SAMARA907 -->
+	<select id="selectDisMOVIEID">
+		SELECT DISTINCT MOVIE_ID FROM TIMETABLE
+	</select>
+	
 </sqlMap>

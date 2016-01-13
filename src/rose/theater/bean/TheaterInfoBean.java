@@ -74,4 +74,12 @@ public class TheaterInfoBean {
 		return theaterNameList;
 	}
 	
+	//SAMARA907
+	@RequestMapping("/selectTheaterIDName")
+	@ResponseBody
+	public List<Theater> selectTheaterIDName() {
+		List<Theater> theaterList = (List<Theater>)sqlMapClient.queryForList("theaters.selectTheaterIDName", null);
+		return theaterList;
+	}
+	
 }

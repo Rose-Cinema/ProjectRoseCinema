@@ -4,6 +4,11 @@
 	
 	<typeAlias alias="movie" type="rose.DTO.MovieInfoDTO"/>
 	
+	<resultMap class="rose.DTO.MovieInfoDTO" id="IDNameResultMap">
+		<result property="movie_id" column="MOVIE_ID"/>
+		<result property="movie_name" column="MOVIE_NAME"/>
+	</resultMap>
+	
 	<!-- Select All -->
 	<select id="getMovieList" resultClass="Movie" >
 		select * from MOVIE_INFO
@@ -53,6 +58,10 @@
 	<!-- SAMARA907 -->
 	<select id="selectAllMovieName" resultClass="String">
 		SELECT MOVIE_NAME FROM MOVIE_INFO
+	</select>
+	<!-- SAMARA907 -->
+	<select id="selectMovieIDName" resultMap="movie.IDNameResultMap">
+		SELECT * FROM MOVIE_INFO
 	</select>
 	
 	

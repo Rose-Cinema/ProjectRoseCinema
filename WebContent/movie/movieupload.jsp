@@ -154,7 +154,7 @@
 	<input type="file" name="video" id="video" /><br />
     </div>
     <input type="submit" value="등록" /> 
-    <input type="button" value="취소" onclick="window.location='movielist.jsp'" />
+    <input type="button" value="취소" onclick="window.location='/RoseCinema/movie/movielist.do'" />
 </form>        
 </body>
  
