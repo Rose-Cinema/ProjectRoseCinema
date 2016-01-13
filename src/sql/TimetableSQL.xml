@@ -20,4 +20,13 @@
 		 insert_timetable(#theater_id#, #movie_id#, #screen_id#, #date_info#, #start_time#, #end_time#, #sale_type#)
 	</insert>
 	
+	<!-- SAMARA907 -->
+	<select id="selectAllTimetable" resultClass="Timetable">
+		SELECT * FROM TIMETABLE
+	</select>
+	<!-- SAMARA907 -->
+	<select id="selectDisMOVIEID">
+		SELECT DISTINCT MOVIE_ID FROM TIMETABLE
+	</select>
+	
 </sqlMap>

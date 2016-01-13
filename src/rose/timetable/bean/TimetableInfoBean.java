@@ -61,5 +61,20 @@ public class TimetableInfoBean {
 		sqlMapClient.queryForObject("timetable.setNewTimetable", new_timetable);
 		return getTimetables();
 	}
+	
+	/*SAMARA907*/
+	@RequestMapping("/selectAllTimetable")
+	@ResponseBody
+	public List<Timetable> selectAllTimetable() {
+		List<Timetable> timetableList = (List<Timetable>)sqlMapClient.queryForList("timetable.selectAllTimetable", null);
+		return timetableList;
+	}
+	/*SAMRA907*/
+	@RequestMapping("/selectDisMOVIEID")
+	@ResponseBody
+	public List<String> selectDisMOVIEID() {
+		List<String> disMovieIDList = (List<String>)sqlMapClient.queryForList("timetable.selectDisMOVIEID", null);
+		return disMovieIDList;
+	}
 
 }

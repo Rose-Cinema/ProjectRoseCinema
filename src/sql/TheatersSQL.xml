@@ -3,6 +3,13 @@
 <sqlMap namespace="theaters">
 	
 	<typeAlias alias="Theater" type="rose.theater.bean.Theater"/>
+	
+	<!-- SAMARA907 -->
+	<resultMap class="rose.theater.bean.Theater" id="IDName">
+		<result property="theater_id" column="THEATER_ID"/>
+		<result property="theater_name" column="THEATER_NAME"/>
+	</resultMap>
+	
 	<!-- Select All -->
 	<select id="getTheaterList" resultClass="Theater" >
 		select * from THEATER_INFO
@@ -36,5 +43,9 @@
 	<!-- SAMARA907 -->
 	<select id="selectAllTheaterName" resultClass="String">
 		SELECT THEATER_NAME FROM THEATER_INFO
+	</select>
+	<!-- SAMARA907 -->
+	<select id="selectTheaterIDName" resultMap="theaters.IDName">
+		SELECT THEATER_ID, THEATER_NAME, AREA_ID, TOTAL_SEATS FROM THEATER_INFO
 	</select>
 </sqlMap>
