@@ -16,9 +16,11 @@ $(document).ready(function(){
 });
 </script>
 
-<ul class="nav nav-pills">
-  <li id="theater1" role="presentation"><a href="/RoseCinema/theaters/1/timetable">장미극장 강남점</a></li>
-  <li id="theater2" role="presentation"><a href="/RoseCinema/theaters/2/timetable">장미극장 서초점</a></li>
-</ul>
+<div class="col-xs-10">
+	<ul class="nav nav-pills">
+	  <li id="theater1" role="presentation"><a href="/RoseCinema/theaters/1/timetable">장미극장 강남본점</a></li>
+	  <li id="theater2" role="presentation"><a href="/RoseCinema/theaters/2/timetable">장미극장 강남점</a></li>
+	</ul>
+</div>
 
 </html>

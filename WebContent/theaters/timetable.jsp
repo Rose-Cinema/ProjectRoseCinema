@@ -15,12 +15,12 @@ function getPlayDates(){
 	    url: "/RoseCinema/timetable/dates/${theater_id}",
 	    type: 'GET',
 	    success: function(result) {
-	    	var contents = "<tr>";
+	    	var contents = "<tr><td>";
 			for( var i in result ){
 				var date = ""+result[i];
-				contents += "<td><button type='button' class='btn btn-default' onClick='return getTimetableData(\""+date+"\")'>"+date+"</button></td>";
+				contents += "<button type='button' class='btn btn-default' onClick='return getTimetableData(\""+date+"\")'>"+date.substring(0,2)+"월 "+date.substring(2,4)+"일"+"</button>&nbsp;";
 			}
-			contents += "</tr>";
+			contents += "</td></tr>";
     		$('#select_date').append(contents);
 	    }
 	});
@@ -38,6 +38,12 @@ function getTimetableData(date){
 	    type: 'GET',
 	    success: function(result) {
 			var timetable = result;
+			if( timetable.length == 0 )
+			{
+				$('#timetables').append('<tr><td colspan="3">상영 정보가 없습니다.</td></tr>');
+				return;
+			}
+			
 			var movie = {};
 			for( var i in timetable ){
 				var movie_id = timetable[i].movie_id;
@@ -62,13 +68,13 @@ function addCells(movie_id, screens){
 	    url: "/RoseCinema/movie/"+movie_id,
 	    type: 'GET',
 	    success: function(result) {
-	    	$('#timetables').append('<tr><td>'+result.movie_name+'</td></tr>');
+	    	var contents = "<tr>";
+	    	contents += "<td rowspan="+Object.keys(screens).length+">"+result.movie_name+"</td>";
 			for( var s in screens ) {
-		    	$('#timetables').append('<tr><td>'+s+'관</td></tr>');
-		    	var contents = "";
+		    	contents += "<td>"+s+"관</td>";
+			    contents += "<td>";
 		    	for ( var t in screens[s] ){
 		    		var t_info = screens[s][t];
-			    	contents += "<tr><td>";
 			    	contents += "<button type='button' class=";
 			    	var button = "'btn btn-primary'";
 			    	if( t_info.sale_type == 1 )
@@ -77,29 +83,30 @@ function addCells(movie_id, screens){
 			    		button = "'btn btn-warning'"
 			    	if( t_info.remain_seats <= 0 ){
 			    		t_info.remain_seats = 0;
-			    		button += " disabled=disabled";
+			    		button += " disabled=\"disabled\"";
 			    	}
 			    	contents += button;
 			    	contents += " onClick='return sendTicketPage("+t_info.timetable_id+");'";
+			    	contents += " title='잔여석 : "+t_info.remain_seats+"'";
 			    	contents += ">";
-		    		contents += t_info.start_time;
+		    		contents += t_info.start_time.substring(0,2)+"시 "+t_info.start_time.substring(2,4)+"분";
 		    		contents += "</button>";
-		    		contents += "</td><td>";
-		    		contents += "잔여석 : "+t_info.remain_seats;
-		    		contents += "</td></tr>";
+		    		contents += "&nbsp;";
 		    	}
-		    	$('#timetables').append(contents);
+	    		contents += "</td>";
+		    	contents += "</tr>";
 			}
+	    	$('#timetables').append(contents);
 	    }
     });
 }
-
 function sendTicketPage(timetable_id){
-	console.log("click : "+timetable_id);
+	alert('예매 시스템 개발 중 : 문의 김준영');
+	//console.log("click : "+timetable_id);
 }
 </script>
 
-<div class="col-xs-12">
+<div class="col-xs-10">
 <ul class="nav nav-tabs">
 	<li role="presentation" class="active"><a href="/RoseCinema/theaters/${theater_id }/timetable">상영 시간표</a></li>
 	<li role="presentation"><a href="/RoseCinema/theaters/${theater_id }/location">위치 안내</a></li>
@@ -107,14 +114,25 @@ function sendTicketPage(timetable_id){
 </ul>
 </div>
 
-<div>
+<div class="col-xs-10">
+</div>
+
+<div class="col-xs-10">
 	<table>
 		<tbody id="select_date"></tbody>
 	</table>
 </div>
 
-<div>
-	<table>
+
+<div class="col-xs-10">
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col" style="width: 25%;">상영작</th>
+				<th scope="col" style="width: 25%;">상영관</th>
+				<th>상세정보</th>
+			</tr>
+		</thead>
 		<tbody id="timetables"></tbody>
 	</table>
 </div>

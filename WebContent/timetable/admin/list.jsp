@@ -21,10 +21,11 @@ function getPlayDatesAll(){
 	    success: function(result) {
 			for( var i in result ){
 				var date = ""+result[i];
-				var index = Number(i)+1;
-				$('#date_list').append("<option value='"+index+"''>"+date+"</option>");
+				$('#date_list').append("<option value='"+date+"''>"+date.substring(0,2)+"월 "+date.substring(2,4)+"일"+"</option>");
+				if( i == 0 ){
+					$('#date_list').val(date);
+				}
 			}
-			$('#date_list').val(1);
 			getTimetableData();
 	    }
 	});
@@ -33,7 +34,7 @@ function getPlayDatesAll(){
 function getTimetableData(){
 	$('#timetables').html("");
 	var theater_id = $('#theater_list').val();
-	var date = $("#date_list option:selected").text();
+	var date = $("#date_list").val();
 	var timetable_url = timetable_url = "/RoseCinema/timetable/theater/"+theater_id+"/date/"+date;
 
 	$.ajax({
@@ -44,7 +45,7 @@ function getTimetableData(){
 			var movie = {};
 			if( timetable.length == 0 )
 			{
-				$('#timetables').append('<tr><td>상영 정보가 없습니다.</td></tr>');
+				$('#timetables').append('<tr><td colspan="3">상영 정보가 없습니다.</td></tr>');
 				return;
 			}
 			
@@ -71,34 +72,30 @@ function addCells(movie_id, screens){
 	    url: "/RoseCinema/movie/"+movie_id,
 	    type: 'GET',
 	    success: function(result) {
-	    	$('#timetables').append('<tr><td>'+result.movie_name+'</td></tr>');
+	    	var contents = "<tr>";
+	    	contents += "<td rowspan="+Object.keys(screens).length+">"+result.movie_name+"</td>";
 			for( var s in screens ) {
-		    	$('#timetables').append('<tr><td>'+s+'관</td></tr>');
-		    	var contents = "";
+		    	contents += "<td>"+s+"관</td>";
+			    contents += "<td>";
 		    	for ( var t in screens[s] ){
 		    		var t_info = screens[s][t];
-			    	contents += "<tr><td>";
 			    	contents += "<button type='button' class=";
 			    	var button = "'btn btn-primary'";
 			    	if( t_info.sale_type == 1 )
 			    		button = "'btn btn-info'";
 			    	else if( t_info.sale_type == 3 )
 			    		button = "'btn btn-warning'"
-			    	if( t_info.remain_seats <= 0 ){
-			    		t_info.remain_seats = 0;
-			    		button += " disabled=disabled";
-			    	}
 			    	contents += button;
 			    	contents += " onClick='return getInfo("+t_info.timetable_id+");'";
 			    	contents += ">";
-		    		contents += t_info.start_time;
+			    	contents += t_info.start_time.substring(0,2)+"시 "+t_info.start_time.substring(2,4)+"분";
 		    		contents += "</button>";
-		    		//contents += "</td><td>";
-		    		//contents += "잔여석 : "+t_info.remain_seats;
-		    		contents += "</td></tr>";
+		    		contents += "&nbsp;";
 		    	}
-		    	$('#timetables').append(contents);
+	    		contents += "</td>";
+		    	contents += "</tr>";
 			}
+	    	$('#timetables').append(contents);
 	    }
     });
 }
@@ -113,7 +110,7 @@ function addTimetable(){
 
 </script>
 
-<div class="col-xs-8">
+<div class="col-xs-10">
 	<table class="table">
 		<tr>
 			<td>
@@ -133,7 +130,14 @@ function addTimetable(){
 		</tr>
 	</table>
 	
-	<table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col" style="width: 25%;">상영작</th>
+				<th scope="col" style="width: 25%;">상영관</th>
+				<th>상세정보</th>
+			</tr>
+		</thead>
 		<tbody id="timetables"></tbody>
 	</table>
 </div>

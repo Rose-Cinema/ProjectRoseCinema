@@ -18,7 +18,7 @@
 <jsp:include page="select_cities.jsp"/>
 
 <!-- 영화관 정보 -->
-<div>
+<div class="col-xs-10">
 <p>극장 이름 : ${theater_name }</p>
 <p>주소 : ${adress }</p>
 <p>전화번호 : ${phone }</p>
