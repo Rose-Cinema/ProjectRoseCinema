@@ -9,7 +9,7 @@
 <body>
 
 
-<font size="6">[현재 년도] ROSE CINEMA VIP 선정 기준</font>
+<font size="6">[2016]년도 ROSE CINEMA VIP 선정 기준</font>
 <hr>
 
 
@@ -25,12 +25,10 @@
 </table>
 <br/>
 <hr>
-- 기간: [작년 년도]01.01~[다음년 년도]12.31(상영일 기준)<br/>
+- 선정 기간: 2015.01.01~2016.12.31(상영일 기준)<br/>
 - 기간 내 유료 예매한 영화 편수
-- 등급 유지 기간: [올해 년도]01.01~[내년 년도]12.31
+- 등급 유지 기간: 2016.01.01~2016.12.31
 <br/>
-<input type="button" value="나의 예매횟수 조회하기" onclick="location.href='mypoint.jsp'">
-
 
 </body>
 </html>

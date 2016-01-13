@@ -15,7 +15,6 @@ Calendar cal = Calendar.getInstance();
 int nowYear=cal.get(Calendar.YEAR);
 %>
 
-  [DB:mgrade_history테이블에서 정보 끌어다와서 보여주기!!!]
   
   <br/>
  
@@ -81,7 +80,7 @@ int nowYear=cal.get(Calendar.YEAR);
 
   
   
-  <a href="memgradeinfoForm.jsp">멤버쉽 등급 기준표</a>
+  <a href="/RoseCinema/mypage/memgradeinfoForm.jsp">멤버쉽 등급 기준표</a>
   
   
   

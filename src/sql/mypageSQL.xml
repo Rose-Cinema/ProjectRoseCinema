@@ -6,6 +6,7 @@
    <typeAlias alias="pointDTO" type="rose.DTO.MpointHistoryDTO"/>
    <typeAlias alias="mgradeDTO" type="rose.DTO.MgradeHistoryDTO"/>
    <typeAlias alias="mcardDTO" type="rose.DTO.McardInfoDTO"/>
+    <typeAlias alias="ticketDTO" type="rose.DTO.TicketDTO"/>
 	
 		<resultMap class="rose.DTO.TicketDTO" id="ticketResultMap">
 		<result property="ticketID" column="TICKETID" nullValue="0"/>
@@ -80,28 +81,24 @@
     </delete> 
     
     
-	<!-- 
-	<select id="myTicketAfter" resultMap="ticket.ticketResultMap" parameterClass="int">
-		<![CDATA[ SELECT * FROM TICKET_INFO WHERE memberid = #memNum# and ticketdate > sysdate]]>
-	</select>  볼예정인 내영화내역 -->
+
+	<select id="myTicketAfter" resultMap="mypage.ticketResultMap" parameterClass="int">
+		<![CDATA[ SELECT * FROM TICKET_INFO WHERE memberid = #memNum# and ticketdate > sysdate and ticketdate<sysdate+30 and ISCANCEL = 0]]>
+	</select>  <!-- 볼예정인 내 영화내역, 예매 내역, 최근 1개월 동안 카운트 -->
 	
-	
+
+	<select id="myTicketCancel" resultMap="mypage.ticketResultMap" parameterClass="int">
+		<![CDATA[SELECT * FROM TICKET_INFO WHERE MEMBERID = #memNum# and ISCANCEL = 1]]>
+	</select>  <!-- 취소영화내역 --> 
+
 	<select id="myTicket" resultMap="mypage.ticketResultMap" parameterClass="int">
-		SELECT * FROM TICKET_INFO WHERE MEMBERID = #memNum#
-	</select> <!-- 모든 내영화내역 -->
+		<![CDATA[SELECT * FROM TICKET_INFO WHERE MEMBERID = #memNum# and ISCANCEL = 0]]>
+	</select>  <!-- 모든 내영화내역, 내 무비 히스토리 -->
 	
-	
-	<!-- 
-    <select id="myTicketBefore" resultClass="ticketDTO" parameterClass="java.util.HashMap">
-		<![CDATA[ SELECT * FROM TICKET_INFO WHERE memberid = #memNum# and ticketdate > sysdate]]>
-	</select>  최근 1개월 봤던 영화내역 -->
-	
-	
-	<!-- 
-	<select id="myTicketCancel" resultClass="ticketDTO" parameterClass="java.util.HashMap">
-		SELECT * FROM TICKET_INFO WHERE MEMBERID = #memberID# and 
-	</select> 취소 영화내역 -->
-	
+        
+    <delete id="reservedel" parameterClass="ticketDTO" >
+       delete from ticket_info where ticketid = #ticketID#
+    </delete>     
         
    
 </sqlMap> 
