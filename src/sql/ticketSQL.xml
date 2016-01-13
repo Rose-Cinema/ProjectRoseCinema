@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="ticket">
-	<typeAlias alias="ticketDTO" type="rose.dto.TicketDTO"/>
+	<typeAlias alias="ticketDTO" type="rose.DTO.TicketDTO"/>
 	
-	<resultMap class="rose.dto.TicketDTO" id="ticketResultMap">
+	<resultMap class="rose.DTO.TicketDTO" id="ticketResultMap">
 		<result property="ticketID" column="TICKETID" nullValue="0"/>
 		<result property="no" column="NO" nullValue="0"/>
 		<result property="screenID" column="SCREENID" nullValue="0"/>

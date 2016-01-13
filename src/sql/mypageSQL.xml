@@ -99,6 +99,4 @@
     <delete id="reservedel" parameterClass="ticketDTO" >
        delete from ticket_info where ticketid = #ticketID#
     </delete>     
-        
-   
 </sqlMap> 

@@ -16,9 +16,9 @@
 
 <div class="col-xs-12">
 <ul class="nav nav-pills">
-	<li role="presentation"><a href="#">3D</a></li>
-	<li role="presentation"><a href="#">4D</a></li>
-	<li role="presentation"><a href="#">IMAX</a></li>
+	<li role="presentation"><a href="/RoseCinema/screens/special/3D">3D</a></li>
+	<li role="presentation"><a href="/RoseCinema/screens/special/4D">4D</a></li>
+	<li role="presentation"><a href="/RoseCinema/screens/special/IMAX">IMAX</a></li>
 </ul>
 </div>
 

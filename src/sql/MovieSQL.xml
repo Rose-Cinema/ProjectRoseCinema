@@ -50,6 +50,11 @@
 		select * from comment_info
 	</select>
 	
+	<!-- SAMARA907 -->
+	<select id="selectAllMovieName" resultClass="String">
+		SELECT MOVIE_NAME FROM MOVIE_INFO
+	</select>
+	
 	
 	
 	

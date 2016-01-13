@@ -1,9 +1,9 @@
 package rose.DTO;
- 
+
 import java.util.Date;
- 
+
 public class TicketDTO {
- 
+
 	private int ticketID;
 	private String no;
 	private int screenID;
