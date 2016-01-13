@@ -79,6 +79,20 @@ function getTimetableInfo(){
 	    	$('#start_time').val(result.start_time);
 	    	$('#end_time').val(result.end_time);
 	    	$('#saletype_list').val(result.sale_type);
+	    	$('#total_seats').val(result.total_seats);
+	    	$('#remain_seats').val(result.remain_seats);
+	    }
+	});
+}
+
+function deleteTimetable(){
+	$.ajax({
+	    url: "/RoseCinema/timetables/"+${timetable_id},
+	    type: 'DELETE',
+	    success: function(result) {
+	    	console.log(result);
+
+	    	backList();
 	    }
 	});
 }
@@ -107,9 +121,13 @@ function editTimetable(){
 	    success: function(result) {
 	    	console.log(result);
 
-			$(location).attr('href', '/RoseCinema/timetable/admin/list');
+	    	backList();
 	    }
 	});
+}
+
+function backList(){
+	$(location).attr('href', '/RoseCinema/timetable/admin/list');
 }
 
 
@@ -126,7 +144,7 @@ function editTimetable(){
 					<tr>
 						<td><label id="theaters">극장 코드</label></td>
 						<td colspan="3">
-							<select class="form-control" id="theater_list">
+							<select class="form-control" id="theater_list" disabled>
 								<option value="1" selected>강남본점</option>
 								<option value="2">강남점</option>
 							</select>
@@ -135,14 +153,14 @@ function editTimetable(){
 					<tr>
 						<td><label id="screens">상영관 정보</label></td>
 						<td colspan="3">
-							<select class="form-control" id="screen_list">
+							<select class="form-control" id="screen_list" disabled>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td><label id="movies">상영작</label></td>
 						<td colspan="3">
-							<select class="form-control" id="movie_list">
+							<select class="form-control" id="movie_list" disabled>
 							</select>
 						</td>
 					</tr>
@@ -150,7 +168,7 @@ function editTimetable(){
 						<td><label>연도</label></td>
 						<td colspan="3">
 							<div class='input-group date' id='datepicker_year'>
-			                    <input type='text' class="form-control" id='year_info'/>
+			                    <input type='text' class="form-control" id='year_info' readonly/>
 			                    <span class="input-group-addon">
 			                        <span class="glyphicon glyphicon-calendar"></span>
 			                    </span>
@@ -161,7 +179,7 @@ function editTimetable(){
 						<td><label>날짜</label></td>
 						<td colspan="3">
 							<div class='input-group date' id='datepicker_date'>
-			                    <input type='text' class="form-control" id='date_info'/>
+			                    <input type='text' class="form-control" id='date_info' readonly/>
 			                    <span class="input-group-addon">
 			                        <span class="glyphicon glyphicon-calendar"></span>
 			                    </span>
@@ -172,7 +190,7 @@ function editTimetable(){
 						<td><label>시작 시간</label></td>
 						<td colspan="3">
 							<div class='input-group date' id='datepicker_sdate'>
-			                    <input type='text' class="form-control" id='start_time'/>
+			                    <input type='text' class="form-control" id='start_time' readonly/>
 			                    <span class="input-group-addon">
 			                        <span class="glyphicon glyphicon-calendar"></span>
 			                    </span>
@@ -183,7 +201,7 @@ function editTimetable(){
 						<td><label>종료 시간</label></td>
 						<td colspan="3">
 							<div class='input-group date' id='datepicker_edate'>
-			                    <input type='text' class="form-control" id='end_time' />
+			                    <input type='text' class="form-control" id='end_time' readonly/>
 			                    <span class="input-group-addon">
 			                        <span class="glyphicon glyphicon-calendar"></span>
 			                    </span>
@@ -193,12 +211,24 @@ function editTimetable(){
 					<tr>
 						<td><label id="sale_type">판매 타입</label></td>
 						<td colspan="3">
-							<select class="form-control" id="saletype_list">
+							<select class="form-control" id="saletype_list" disabled>
 								<option value="1">조조</option>
 								<option value="2">일반</option>
 								<option value="3">심야</option>
 							</select>
 						</td>
+					</tr>
+					<tr>
+						<td><label>총 좌석 수</label></td>
+						<td colspan="3">
+			            	<input type='text' class="form-control" id='total_seats' readonly/>
+			            </td>
+					</tr>
+					<tr>
+						<td><label>잔여 좌석 수</label></td>
+						<td colspan="3">
+			            	<input type='text' class="form-control" id='remain_seats' readonly/>
+			            </td>
 					</tr>
 				</table>
 			</td>
@@ -206,8 +236,8 @@ function editTimetable(){
 		<tr>
 			<td>
 				<div style="text-align: right">
-					<button type="button" class="btn btn-success" onClick="return editTimetable();">승인</button>
-					<button type="button" class="btn btn-danger">취소</button>
+					<button type="button" class="btn btn-danger" onClick="return deleteTimetable();">삭제</button>
+					<button type="button" class="btn btn-warning" onClick="return backList();">돌아가기</button>
 				</div>
 			</td>
 		</tr>

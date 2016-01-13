@@ -85,9 +85,9 @@ public class TimetableInfoBean {
 		return "edit";
 	}
 	
-	@RequestMapping(value = "/timetable", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/timetables/{timetable_id}", method = RequestMethod.DELETE)
 	@ResponseBody
-	public String deleteTimetable(@PathVariable int timetable_id) {
+	public String deleteTimetable(@PathVariable("timetable_id") int timetable_id) {
 		sqlMapClient.queryForObject("timetable.deleteTimetable", timetable_id);
 		return "delete";
 	}

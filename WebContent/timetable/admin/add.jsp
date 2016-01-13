@@ -88,11 +88,14 @@ function addTimetable(){
 	    success: function(result) {
 	    	console.log(result);
 
-			$(location).attr('href', '/RoseCinema/timetable/admin/list');
+	    	backList();
 	    }
 	});
 }
 
+function backList(){
+	$(location).attr('href', '/RoseCinema/timetable/admin/list');
+}
 
 </script>
 </head>
@@ -187,8 +190,8 @@ function addTimetable(){
 		<tr>
 			<td>
 				<div style="text-align: right">
-					<button type="button" class="btn btn-success" onClick="return addTimetable();">승인</button>
-					<button type="button" class="btn btn-danger">취소</button>
+					<button type="button" class="btn btn-success" onClick="return addTimetable();">추가</button>
+					<button type="button" class="btn btn-warning" onClick="return backList();">돌아가기</button>
 				</div>
 			</td>
 		</tr>

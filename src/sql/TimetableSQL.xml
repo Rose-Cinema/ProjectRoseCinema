@@ -40,9 +40,9 @@
 		 {call update_timetable(#timetable_id#, #theater_id#, #movie_id#, #screen_id#, #year_info#, #date_info#, #start_time#, #end_time#, #sale_type#)}
 	</procedure>
 	<!-- delete timetable by id -->
-	<delete id="deleteTimetable" parameterClass="int">
-		delete from TIMETABLE where TIMTETABLE_ID=#timetable_id#
-	</delete>
+	<procedure id="deleteTimetable" parameterClass="int">
+		{call delete_timetable(#timetable_id#)}
+	</procedure>
 	
 	<!-- SAMARA907 -->
 	<select id="selectAllTimetable" resultClass="Timetable">
