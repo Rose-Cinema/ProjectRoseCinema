@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -121,6 +123,13 @@ public class MovieBean {
 		mv.setViewName("/movie/moviecontent.jsp");
 		return mv;
 	}
+
+	@RequestMapping(value = "/movie/{movie_id}", method = RequestMethod.GET)
+	@ResponseBody
+	public MovieInfoDTO getMovieInfo(@PathVariable int movie_id) {
+		MovieInfoDTO dto  = (MovieInfoDTO)sqlMapClient.queryForObject("movie.contentMovie", movie_id);
+		return dto;
+	}
 	
 	//SAMARA907
 	@RequestMapping("/selectAllMovieName")
@@ -128,6 +137,14 @@ public class MovieBean {
 	public List<String> selectAllMovieName() {
 		List<String> MovieNameList = (List<String>)sqlMapClient.queryForList("movie.selectAllMovieName", null);
 		return MovieNameList;
+	}
+	
+	//mingyeong
+	@RequestMapping("/movies")
+	@ResponseBody
+	public List<MovieInfoDTO> getMovieList() {
+		List<MovieInfoDTO> MovieList = (List<MovieInfoDTO>)sqlMapClient.queryForList("movie.getMovieList", null);
+		return MovieList;
 	}
 	
 

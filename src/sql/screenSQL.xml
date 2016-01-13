@@ -10,4 +10,9 @@
 	<select id="selectAllScreenID" resultClass="int">
 		SELECT SCREEN_ID FROM SCREEN_INFO
 	</select>
+	
+	<!-- mingyoeng -->
+	<select id="getScreenInfoByTheater" resultClass="screenDTO" parameterClass="int">
+		select * from SCREEN_INFO where THEATER_ID = #theater_id#
+	</select>
 </sqlMap>
