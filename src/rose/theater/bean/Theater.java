@@ -10,7 +10,6 @@ public class Theater {
 	private int total_seats;
 	private String location_x;
 	private String location_y;
-	private String image;
 	public int getTheater_id() {
 		return theater_id;
 	}
@@ -64,12 +63,6 @@ public class Theater {
 	}
 	public void setLocation_y(String location_y) {
 		this.location_y = location_y;
-	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
 	}
 	
 }

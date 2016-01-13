@@ -36,7 +36,6 @@ public class TheaterUserBean {
 		req.setAttribute("view_type", "location");
 		req.setAttribute("location_x", theater.getLocation_x());
 		req.setAttribute("location_y", theater.getLocation_y());
-		req.setAttribute("image", theater.getImage());
 		
 		return "/theaters/main.jsp";
 	}

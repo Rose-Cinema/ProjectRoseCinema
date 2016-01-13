@@ -40,6 +40,7 @@ function initialize() {
 </div>
 
 <body onload="initialize()">
+
 	<table>
 		<tr>
 			<td style="width: 15;"> </td>

@@ -14,6 +14,8 @@ th, td {border: 1px solid #006666; font-size: 14;}
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<jsp:include page="/top_nav.jsp"/>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>영화 목록</title>
 

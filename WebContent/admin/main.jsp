@@ -7,7 +7,13 @@
 </head>
 <body>
 
+<!-- 
 <jsp:include page="top_nav.jsp"/>
+ -->
+
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<c:redirect url="/movie/movieupload.do"/>
+
 
 </body>
 </html>

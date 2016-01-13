@@ -90,17 +90,17 @@ public class EventBean{
 		return "/event/eventContent.jsp";
 	}
 	
-	@RequestMapping("/top")
+	@RequestMapping("/event/top")
 	public String top(HttpServletRequest request)throws Exception{
 		return "/event/top.jsp";
 	}
 	
-	@RequestMapping("/main")
+	@RequestMapping("/event/main")
 	public String main(HttpServletRequest request)throws Exception{
 		return "/event/main.jsp";
 	}
 	
-	@RequestMapping("/bottom")
+	@RequestMapping("/event/bottom")
 	public String bottom(HttpServletRequest request)throws Exception{
 		return "/event/bottom.jsp";
 	}

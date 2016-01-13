@@ -19,22 +19,16 @@
 		select * from THEATER_INFO where theater_id = #theater_id#
 	</select>
 	<!-- insert new theater -->
-	<insert id="setNewTheater" parameterClass="Theater">
-		exec insert_theater(#theater_name#, #area_id#, #adress#, #phone#, #location_x#, #location_y#)
-	</insert>
-	
-	<update id="updateTheaterInfo" parameterClass="Theater">
-		update THEATER_INFO set THEATER_NAME = #theater_name#, AREA_ID = #area_id#, ADRESS = #adress#, PHONE = #phone#, LOCATION_X = #location_x#, LOCATION_Y = #location_y# where THEATER_ID = #theater_id#
-	</update>
+	<procedure id="setNewTheater" parameterClass="Theater">
+		{call insert_theater(#theater_name#, #area_id#, #adress#, #phone#, #location_x#, #location_y#)}
+	</procedure>
+	<procedure id="updateTheaterInfo" parameterClass="Theater">
+		{call update_theater( #theater_id#, #theater_name#, #area_id#, #adress#, #phone#, #location_x#, #location_y#)}
+	</procedure>
 	
 	<delete id="deleteTheaterInfo" parameterClass="int">
 		delete from THEATER_INFO where THEATER_ID = #theater_id#
 	</delete>
-	
-	<update id="updateTheaterImage" parameterClass="Theater">
-		update THEATER_INFO set IMAGE = #image# where THEATER_ID = #theater_id#
-	</update>
-	
 	
 	<!-- SAMARA907 -->
 	<select id="selectTheaterNameByScreenID" parameterClass="String" resultClass="String">

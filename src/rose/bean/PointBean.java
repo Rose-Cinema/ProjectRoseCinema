@@ -24,6 +24,8 @@ public class PointBean {
 	@RequestMapping("/meminfoForm")
 	public String meminfo(HttpSession session , HttpServletRequest request) throws Exception{
 		String id = (String)session.getAttribute("memId");		
+		if( id == null)
+			return "/need_login.jsp";
 		id += "_mpoint";
 		List<?> pointlist = sqlMapClient.queryForList("mypage.mpointhistory", id);
 		request.setAttribute("mpoint", pointlist);

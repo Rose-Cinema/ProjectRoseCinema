@@ -16,6 +16,9 @@
 		<li><a href="/RoseCinema/inputForm">회원가입</a></li>
 	</c:when>
 	<c:otherwise>
+		<c:if test="${sessionScope.memId eq 'admin' }">
+			<li><a href="/RoseCinema/admin">관리자 페이지</a></li>
+		</c:if>
 		<li><a href="/RoseCinema/logout">로그아웃</a></li>
 	</c:otherwise>
 </c:choose>
@@ -23,7 +26,7 @@
 
 <nav class="navbar navbar-default">
 	<div role="navigation" class="navbar-header">
-		<a class="navbar-brand" href="/RoseCinema"><strong>로즈 시네마</strong></a>
+		<a class="navbar-brand" href="/RoseCinema/"><strong>로즈 시네마</strong></a>
 	</div>
 	<div>
 		<ul class="nav navbar-nav">
@@ -32,22 +35,23 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">극장<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="/RoseCinema/theaters/main">로즈 극장</a></li>
+					<li><a href="/RoseCinema/theaters/main">장미 극장</a></li>
 					<li><a href="/RoseCinema/screens/special">특별관</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">이벤트<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="/RoseCinema/eventMain">이벤트</a></li>
+					<li><a href="/RoseCinema/eventList">이벤트</a></li>
 				</ul>
 			</li>
+			<li><a href="/RoseCinema/mypage/memgradeinfoForm.jsp">멤버쉽 안내</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이페이지<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/RoseCinema/mypageForm">내 정보</a></li>
-					<li><a href="/RoseCinema/gradehistoryForm">멤버쉽 등급</a></li>
-					<li><a href="/RoseCinema/meminfoForm">멤버쉽 포인트</a></li>
+					<li><a href="/RoseCinema/gradehistoryForm">나의 멤버쉽 등급</a></li>
+					<li><a href="/RoseCinema/meminfoForm">나의 멤버쉽 포인트</a></li>
 				</ul>
 			</li>
 		</ul>

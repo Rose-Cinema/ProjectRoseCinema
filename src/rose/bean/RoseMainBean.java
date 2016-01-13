@@ -15,4 +15,9 @@ public class RoseMainBean {
 	public String showAdminMain(){
 		return "/admin/main.jsp";
 	}
+	
+	@RequestMapping("/need_login")
+	public String showNeedLogin(){
+		return "/need_login.jsp";
+	}
 }

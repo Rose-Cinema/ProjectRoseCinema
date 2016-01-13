@@ -23,11 +23,15 @@
 
 <!-- 영화관 정보 -->
 <div class="col-xs-10">
-<img src="http://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg"/>
-<p>${theater_name }</p>
-<p>${adress }</p>
-<p>${phone }</p>
-<p>${total_screen }관 / ${total_seats }석</p>
+	<div class="thumbnail">
+		<img src="/RoseCinema/theaters/image/${theater_id }.jpg"/>
+		<div class="caption">
+			<p>${theater_name }</p>
+			<p>${adress }</p>
+			<p>${phone }</p>
+			<p>${total_screen }관 / ${total_seats }석</p>
+		</div>
+	</div>
 </div>
 
 <jsp:include page="${view_type }.jsp"/>

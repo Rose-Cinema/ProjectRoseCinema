@@ -13,6 +13,7 @@
 
 <body>
 
+
 회원가입 창으로 넘어가는 form 확인 ->
 <input type="button" value="회원가입" onclick="location.href='/RoseCinema/inputForm'">
 
@@ -64,9 +65,6 @@
 
 
 
-
-
- 
 
 
 

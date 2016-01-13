@@ -6,10 +6,12 @@
 
 </head>
 <body>
-
+<!-- 
 <jsp:include page="top_nav.jsp"/>
+ -->
 
-<jsp:include page="/movie/movielist.jsp"/>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<c:redirect url="/movie/movielist.do"/>
 
 </body>
 </html>

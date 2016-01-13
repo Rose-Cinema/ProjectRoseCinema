@@ -110,6 +110,11 @@ function addTimetable(){
 }
 
 </script>
+
+<div class="page-header">
+	<h2>상영시간표 관리</h2>
+</div>
+
 <div class="col-xs-10">
 	<table class="table">
 		<thead>
