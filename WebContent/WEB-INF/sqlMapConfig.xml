@@ -16,6 +16,7 @@
 	<sqlMap resource="/sql/CommentSQL.xml"/>
 	<sqlMap resource="/sql/ticketSQL.xml"/>
 	<sqlMap resource="/sql/screenSQL.xml"/>
+	<sqlMap resource="/sql/McardSQL.xml"/>
 
 </sqlMapConfig>
 

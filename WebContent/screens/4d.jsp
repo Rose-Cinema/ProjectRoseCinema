@@ -16,12 +16,16 @@
 
 <div class="col-xs-12">
 <ul class="nav nav-pills">
-	<li role="presentation"><a href="/RoseCinema/screens/special/3D">3D</a></li>
-	<li role="presentation" class="active"><a href="/RoseCinema/screens/special/4D">4D</a></li>
-	<li role="presentation"><a href="/RoseCinema/screens/special/IMAX">IMAX</a></li>
+	<li role="presentation"><a href="/RoseCinema/screens/special/3d">3D</a></li>
+	<li role="presentation" class="active"><a href="/RoseCinema/screens/special/4d">4D</a></li>
+	<li role="presentation"><a href="/RoseCinema/screens/special/imax">IMAX</a></li>
 </ul>
 </div>
 
-4D 설명 페이지
+<!-- cgv 홈페이지 참조 -->
+<div>
+<img src="http://img.cgv.co.kr/R2014/images/sub/specialtheater/fordx/img_4dx_08.jpg"/>
+<img src="http://img.cgv.co.kr/R2014/images/sub/specialtheater/fordx/fordx_02.jpg"/>
+</div>
 
 </html>

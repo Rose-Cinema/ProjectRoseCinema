@@ -74,7 +74,7 @@ function updateThisData(inputData) {
 function selectLastTicketIDSEQ() {
 	$.ajajx({
 		url:"/RoseCinema/selectLastTicketIDSEQ",
-		type:"POSt",
+		type:"POST",
 		data:"",
 		cache:false,
 		async:false,

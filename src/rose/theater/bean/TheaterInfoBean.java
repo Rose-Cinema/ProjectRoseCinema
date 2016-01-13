@@ -58,4 +58,20 @@ public class TheaterInfoBean {
 			return getTheaterList();
 	}
 	
+	//SAMARA907
+	@RequestMapping("/selectTheaterNameByScreenID/{screen_id}")
+	@ResponseBody
+	public String selectTheaterNameByScreenID(@PathVariable String screen_id) {
+		String theater_name = (String)sqlMapClient.queryForObject("theaters.selectTheaterNameByScreenID", screen_id);
+		return theater_name;
+	}
+	
+	//SAMARA907
+	@RequestMapping("selectAllTheaterName")
+	@ResponseBody
+	public List<String> selectAllTheaterName() {
+		List<String> theaterNameList= (List<String>)sqlMapClient.queryForList("theaters.selectAllTheaterName", null);
+		return theaterNameList;
+	}
+	
 }

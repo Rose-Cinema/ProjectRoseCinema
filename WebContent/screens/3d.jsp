@@ -16,12 +16,10 @@
 
 <div class="col-xs-12">
 <ul class="nav nav-pills">
-	<li role="presentation" class="active"><a href="/RoseCinema/screens/special/3D">3D</a></li>
-	<li role="presentation"><a href="/RoseCinema/screens/special/4D">4D</a></li>
-	<li role="presentation"><a href="/RoseCinema/screens/special/IMAX">IMAX</a></li>
+	<li role="presentation" class="active"><a href="/RoseCinema/screens/special/3d">3D</a></li>
+	<li role="presentation"><a href="/RoseCinema/screens/special/4d">4D</a></li>
+	<li role="presentation"><a href="/RoseCinema/screens/special/imax">IMAX</a></li>
 </ul>
 </div>
-
-3D 설명 페이지
 
 </html>
