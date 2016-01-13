@@ -13,6 +13,10 @@
 		select * from Comment_INFO where movie_id=#movie_id#
 	</select>
 	
+	<select id="getAvgScore" resultClass="String" parameterClass="int">
+		select avg(score) from comment_info where movie_id=#movie_id#
+	</select>
+	
 	
 	
 	

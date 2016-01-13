@@ -75,7 +75,8 @@ textarea {width:500px; height:80px; overflow:visible;}
 		<c:if test="${dto.genre_id eq 9}">애니메이션</c:if>				
 		<br/>
 		<br/>
-		<b>예매율</b> : ${dto.ticket_rate }&nbsp;&nbsp;&nbsp; <b>평점</b> : ${dto.score }&nbsp;&nbsp;&nbsp; <br/>
+		
+		<b>평점</b>  : ${avgScore }&nbsp;&nbsp;&nbsp; <br/>
 		</td>
 		<td width="100" align="center" class="line03">
 		<a href=""><img src="/RoseCinema/movie/img/reserve2.jpg">
@@ -142,8 +143,10 @@ textarea {width:500px; height:80px; overflow:visible;}
    				<c:forEach var="commentDto" items="${commentList}">
    				
    					<b>작성자</b> : ${commentDto.id} &nbsp;
-   					<b>내용</b> : ${commentDto.content } &nbsp;&nbsp;
-   					<b>작성일</b> : ${commentDto.reg_date } <br/>
+   						<b>작성일</b> : ${commentDto.reg_date }&nbsp;
+   					<b>내용</b> : ${commentDto.content } &nbsp;
+   					<b>별점</b> : ${commentDto.score} &nbsp;&nbsp;<br/>
+   				
    					
    				</c:forEach>
    			

@@ -21,7 +21,7 @@ th, td {border: 1px solid #006666; font-size: 14;}
 <body>
 
 <font size="5">&nbsp; &nbsp; &nbsp; &nbsp; <b></b></font><p>           
-<table cellpadding="12" cellspacing="10"  align="center" >
+<table cellpadding="12" cel lspacing="10"  align="center" >
 <c:forEach begin="0" end="${(fn:length(list) + 3) / 4 - 1}" var="row">   
 <tr>             
 	<c:forEach begin="0" end="3" var="col">
@@ -48,7 +48,7 @@ th, td {border: 1px solid #006666; font-size: 14;}
 			
 				
 				&nbsp;&nbsp; <b>${dto.movie_name }</b> <br />
-				평점 : ${dto.score } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 예매율 : ${dto.ticket_rate } <br /><br/>
+				평점 : ${dto.score } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /><br/>
 				&nbsp;<a href=""><img src="/RoseCinema/movie/img/reserve.jpg"></a> &nbsp;
 				&nbsp;<a href="moviecontent.do?movie_id=${dto.movie_id}"><img src="/RoseCinema/movie/img/detail.jpg"></a>
 										

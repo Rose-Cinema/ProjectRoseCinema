@@ -43,8 +43,7 @@ public class MovieBean {
 	
 	
 	@RequestMapping("/movie/movieinsert.do")
-	public ModelAndView insert(MultipartHttpServletRequest multi)throws Exception{
-		System.out.println("여기까지");
+	public String insert(MultipartHttpServletRequest multi)throws Exception{
 		MovieInfoDTO dto = new MovieInfoDTO();	
 		dto.setMovie_name(multi.getParameter("movie_name"));
 		dto.setOpendate(multi.getParameter("opendate"));
@@ -62,7 +61,6 @@ public class MovieBean {
 		String simg = ""; 
 		int fileNum = 1;
 		
-		System.out.println("여기까지2");
 		while(files.hasNext()){
 			String fn = (String)files.next();
 			MultipartFile file = multi.getFile(fn);
@@ -92,18 +90,32 @@ public class MovieBean {
 		}
 		dto.setStilcut(simg);
 		sqlMapClient.update("movie.fileUp", dto);
-		ModelAndView mv = new ModelAndView ();
-		mv.setViewName("/movie/movieinsert.jsp");
+/*		ModelAndView mv = new ModelAndView ();
+		mv.setViewName("/movie/movielist.do");*/
 	
-		return mv;
+		return "/movie/movielist.do";
 	}
 	
 	@RequestMapping("/movie/movielist.do")
 	public ModelAndView list()throws Exception{
 		
-		List<MovieInfoDTO> list = sqlMapClient.queryForList("movie.listMovie", null);
+		List<MovieInfoDTO> list = sqlMapClient.queryForList("movie.listMovie", null);	
+		
+		System.out.println(list.size());
+		for (int i = 0; i < list.size(); i++) {
+			String score;
+			if (sqlMapClient.queryForObject("comment.getAvgScore", list.get(i).getMovie_id()) == null) {
+				score = "0";
+			}else {
+				score = (String)sqlMapClient.queryForObject("comment.getAvgScore", list.get(i).getMovie_id());
+			}
+			list.get(i).setScore(score);
+		}
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list" , list);
+
 		mv.setViewName("/movie/movielist.jsp");
 		return mv;
 	}	
@@ -113,9 +125,12 @@ public class MovieBean {
 		
 		MovieInfoDTO dto  = (MovieInfoDTO)sqlMapClient.queryForObject("movie.contentMovie", movie_id);
 		List commentList  = sqlMapClient.queryForList("comment.getCommentList", movie_id);
+		String avgScore	  = (String)sqlMapClient.queryForObject("comment.getAvgScore", movie_id);
+		System.out.println(avgScore);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("dto" , dto);
 		mv.addObject("commentList" , commentList);
+		mv.addObject("avgScore", avgScore);
 		mv.setViewName("/movie/moviecontent.jsp");
 		return mv;
 	}
