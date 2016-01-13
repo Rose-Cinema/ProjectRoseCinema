@@ -1,6 +1,7 @@
 package rose.timetable.bean;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -35,46 +36,62 @@ public class TimetableInfoBean {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
 		Calendar today = Calendar.getInstance();
 		String date = sdf.format(today.getTime());
-		sdf = new SimpleDateFormat("HHmm");
-		String time = sdf.format(today.getTime());
 		
-		return getTimetablebyTheater(theater_id, date, time);
+		return getTimetablebyTheater(theater_id, date);
 	}
 	
-	@RequestMapping(value = "/timetable/theater/{theater_id}/date/{date}/time/{time}", method = RequestMethod.GET)
+	@RequestMapping(value = "/timetable/theater/{theater_id}/date/{date}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Timetable> getTimetablebyTheater(@PathVariable("theater_id") int theater_id, @PathVariable("date") String date, @PathVariable("time") String time) {
+	public List<Timetable> getTimetablebyTheater(@PathVariable("theater_id") int theater_id, @PathVariable("date") String date) {
 		
 		Timetable timetable = new Timetable();
 		timetable.setTheater_id(theater_id);
 		timetable.setDate_info(date);
-		timetable.setStart_time(time);
+
+		SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
+		Calendar today = Calendar.getInstance();
+		String now_date = sdf.format(today.getTime());
+		if( date.equals(now_date) ){
+			sdf = new SimpleDateFormat("HHmm");
+			String time = sdf.format(today.getTime());
+			timetable.setStart_time(time);
+		}
+		else
+			timetable.setStart_time("0000");
 		
 		List<Timetable> timetable_list = (List<Timetable>)sqlMapClient.queryForList("timetable.getTimetablebyTheater", timetable);
 
 		return timetable_list;
 	}
 	
-	@RequestMapping(value = "/timetable", method = RequestMethod.POST)
+	@RequestMapping(value = "/timetables", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Timetable> setNewTimetable(@RequestBody Timetable new_timetable) {
+	public String setNewTimetable(@RequestBody Timetable new_timetable) {
 		sqlMapClient.queryForObject("timetable.setNewTimetable", new_timetable);
-		return getTimetables();
+		return "add";
 	}
 	
-	/*SAMARA907*/
-	@RequestMapping("/selectAllTimetable")
-	@ResponseBody
-	public List<Timetable> selectAllTimetable() {
-		List<Timetable> timetableList = (List<Timetable>)sqlMapClient.queryForList("timetable.selectAllTimetable", null);
-		return timetableList;
-	}
-	/*SAMRA907*/
-	@RequestMapping("/selectDisMOVIEID")
-	@ResponseBody
-	public List<String> selectDisMOVIEID() {
-		List<String> disMovieIDList = (List<String>)sqlMapClient.queryForList("timetable.selectDisMOVIEID", null);
-		return disMovieIDList;
-	}
 
+	@RequestMapping(value = "/timetable", method = RequestMethod.DELETE)
+	@ResponseBody
+	public String deleteTimetable(@PathVariable int timetable_id) {
+		sqlMapClient.queryForObject("timetable.deleteTimetable", timetable_id);
+		return "delete";
+	}
+	
+	@RequestMapping(value = "/timetable/dates/{theater_id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ArrayList<String> getDates(@PathVariable("theater_id") int theater_id) {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
+		Calendar today = Calendar.getInstance();
+		String date = sdf.format(today.getTime());
+
+		Timetable tt = new Timetable();
+		tt.setTheater_id(theater_id);
+		tt.setDate_info(date);
+		
+		ArrayList<String> result = (ArrayList<String>)sqlMapClient.queryForList("timetable.getPlayDatesFromTimetable", tt);
+		return result;
+	}
 }
