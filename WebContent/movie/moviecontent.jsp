@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <title>영화 상세</title>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -18,7 +17,7 @@ textarea {width:500px; height:80px; overflow:visible;}
 <link href='/RoseCinema/resource/jquery.rating.css' type="text/css" rel="stylesheet"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
 </head>
-	<script>
+<script type="text/javascript">
 	$(function(){
 	 $('.hover-star').rating({
 	  focus: function(value, link){
@@ -32,7 +31,13 @@ textarea {width:500px; height:80px; overflow:visible;}
 	  }
 	 });
 	});
-	</script>
+	
+	$(document).ready(function(){
+		  $('.imagebox').bxSlider({
+		  auto: true,
+		  autoControls: true
+		  });
+	})
 </script>
 
 
@@ -70,7 +75,8 @@ textarea {width:500px; height:80px; overflow:visible;}
 		<c:if test="${dto.genre_id eq 9}">애니메이션</c:if>				
 		<br/>
 		<br/>
-		<b>예매율</b> : ${dto.ticket_rate }&nbsp;&nbsp;&nbsp; <b>평점</b> : ${dto.score }&nbsp;&nbsp;&nbsp; <br/>
+		
+		<b>평점</b>  : ${avgScore }&nbsp;&nbsp;&nbsp; <br/>
 		</td>
 		<td width="100" align="center" class="line03">
 		<a href=""><img src="/RoseCinema/movie/img/reserve2.jpg">
@@ -84,8 +90,11 @@ textarea {width:500px; height:80px; overflow:visible;}
 	
 	<tr>
 		<td colspan="3" height="300" class="line03"><b>스틸컷</b><br/>
+				
 		<c:forTokens var="stil" items="${dto.stilcut}" delims=",">
-			<img src="/RoseCinema/movie/stilcut/${stil}">
+		<ul class="imagebox">
+			<li><img src="/RoseCinema/movie/stilcut/${stil}"></li> 
+		</ul>
 		</c:forTokens> 
 		
 		
@@ -134,8 +143,10 @@ textarea {width:500px; height:80px; overflow:visible;}
    				<c:forEach var="commentDto" items="${commentList}">
    				
    					<b>작성자</b> : ${commentDto.id} &nbsp;
-   					<b>내용</b> : ${commentDto.content } &nbsp;&nbsp;
    					<b>작성일</b> : <fmt:formatDate value="${commentDto.reg_date }" pattern="yyyy.MM.dd"/> <br/>
+   					<b>내용</b> : ${commentDto.content } &nbsp;
+   					<b>별점</b> : ${commentDto.score} &nbsp;&nbsp;<br/>
+   				
    					
    				</c:forEach>
    			
@@ -146,9 +157,6 @@ textarea {width:500px; height:80px; overflow:visible;}
 	</div>
 	</td>
 	</tr>
-
-
-
 </table>
 </body>
 </html>

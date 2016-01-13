@@ -65,7 +65,7 @@
 		<td>영화정보</td><!--DB 정보 출력 -->
 		<td colspan="3">
 		
-			<select name="timetable">
+			<select name="timetable_id">
 				<c:forEach var="movieDTO" items="${timeTableInfo }">
 					<option value="${movieDTO.timetable_id }" >날짜:${movieDTO.date_info}시작시간:${movieDTO.start_time}-${movieDTO.movie_name}</option>
 				</c:forEach>
