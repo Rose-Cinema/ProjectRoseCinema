@@ -64,11 +64,18 @@ public class TimetableInfoBean {
 		return timetable_list;
 	}
 	
-	@RequestMapping(value = "/timetable", method = RequestMethod.POST)
+	@RequestMapping(value = "/timetables", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Timetable> setNewTimetable(@RequestBody Timetable new_timetable) {
+	public String setNewTimetable(@RequestBody Timetable new_timetable) {
 		sqlMapClient.queryForObject("timetable.setNewTimetable", new_timetable);
-		return getTimetables();
+		return "add";
+	}
+	
+	@RequestMapping(value = "/timetable", method = RequestMethod.DELETE)
+	@ResponseBody
+	public String deleteTimetable(@PathVariable int timetable_id) {
+		sqlMapClient.queryForObject("timetable.deleteTimetable", timetable_id);
+		return "delete";
 	}
 	
 	@RequestMapping(value = "/timetable/dates/{theater_id}", method = RequestMethod.GET)
@@ -86,5 +93,4 @@ public class TimetableInfoBean {
 		ArrayList<String> result = (ArrayList<String>)sqlMapClient.queryForList("timetable.getPlayDatesFromTimetable", tt);
 		return result;
 	}
-	
 }

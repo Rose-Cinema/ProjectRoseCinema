@@ -20,8 +20,12 @@
 		select * from TIMETABLE where SCREEN_ID = #screen_id# and DATE_INFO = #date_info# and START_TIME > #start_time#
 	</select>
 	<!-- insert new timetable -->
-	<insert id="setNewTimetable" parameterClass="Timetable">
-		 insert_timetable(#theater_id#, #movie_id#, #screen_id#, #date_info#, #start_time#, #end_time#, #sale_type#)
-	</insert>
+	<procedure id="setNewTimetable" parameterClass="Timetable">
+		 {call insert_timetable(#theater_id#, #movie_id#, #screen_id#, #year_info#, #date_info#, #start_time#, #end_time#, #sale_type#)}
+	</procedure>
+	<!-- delete timetable by id -->
+	<delete id="deleteTimetable" parameterClass="int">
+		delete from TIMETABLE where TIMTETABLE_ID=#timetable_id#
+	</delete>
 	
 </sqlMap>

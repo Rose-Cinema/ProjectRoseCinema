@@ -139,6 +139,14 @@ public class MovieBean {
 		return MovieNameList;
 	}
 	
+	//mingyeong
+	@RequestMapping("/movies")
+	@ResponseBody
+	public List<MovieInfoDTO> getMovieList() {
+		List<MovieInfoDTO> MovieList = (List<MovieInfoDTO>)sqlMapClient.queryForList("movie.getMovieList", null);
+		return MovieList;
+	}
+	
 
 }	
 	

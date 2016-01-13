@@ -67,7 +67,7 @@ public class TheaterInfoBean {
 	}
 	
 	//SAMARA907
-	@RequestMapping("selectAllTheaterName")
+	@RequestMapping("/selectAllTheaterName")
 	@ResponseBody
 	public List<String> selectAllTheaterName() {
 		List<String> theaterNameList= (List<String>)sqlMapClient.queryForList("theaters.selectAllTheaterName", null);
