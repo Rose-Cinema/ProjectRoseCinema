@@ -26,6 +26,7 @@
 					<option value="${typeDto.coupon_num}">${typeDto.coupon_name}</option>
 				</c:forEach>
 			</select>
+			<a href="/RoseCinema/couponType" >쿠폰타입 생성</a>
 			</td>
 
 		</tr>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <title>영화 상세</title>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -134,7 +135,7 @@ textarea {width:500px; height:80px; overflow:visible;}
    				
    					<b>작성자</b> : ${commentDto.id} &nbsp;
    					<b>내용</b> : ${commentDto.content } &nbsp;&nbsp;
-   					<b>작성일</b> : ${commentDto.reg_date } <br/>
+   					<b>작성일</b> : <fmt:formatDate value="${commentDto.reg_date }" pattern="yyyy.MM.dd"/> <br/>
    					
    				</c:forEach>
    			

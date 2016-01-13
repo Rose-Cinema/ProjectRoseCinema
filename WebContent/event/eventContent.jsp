@@ -11,7 +11,9 @@
 	</tr>
 	<tr>
 		<td>
-			${dto.estart_date} ~ ${dto.eend_date }
+			<fmt:formatDate value="${dto.estart_date}" pattern="yyyy.MM.dd"/> 
+		    <fmt:formatDate value="${dto.eend_date}" pattern="yyyy.MM.dd"/>
+			 
 		  
 		</td>
 	</tr>

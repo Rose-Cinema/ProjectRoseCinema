@@ -59,6 +59,8 @@
 		</td>
 		
 	</tr>
+	<div style="display:;">
+	
 	<tr>
 		<td>영화정보</td><!--DB 정보 출력 -->
 		<td colspan="3">
@@ -70,9 +72,13 @@
 			</select>
 		</td>
 	</tr>
+	
+	</div>
 	<tr>
 		<td colspan="4" align="center"><input type="submit" value="이벤트 등록"/></td>
 	</tr>
+	
 	</table>
+	
 </form>
 </body>
