@@ -21,7 +21,7 @@
 	</select>
 	<!-- insert new timetable -->
 	<insert id="setNewTimetable" parameterClass="Timetable">
-		exec insert_timetable(#theater_id#, #movie_id#, #screen_id#, #date_info#, #start_time#, #end_time#, #sale_type#)
+		 insert_timetable(#theater_id#, #movie_id#, #screen_id#, #date_info#, #start_time#, #end_time#, #sale_type#)
 	</insert>
 	
 </sqlMap>

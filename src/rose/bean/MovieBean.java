@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -128,6 +129,14 @@ public class MovieBean {
 	public MovieInfoDTO getMovieInfo(@PathVariable int movie_id) {
 		MovieInfoDTO dto  = (MovieInfoDTO)sqlMapClient.queryForObject("movie.contentMovie", movie_id);
 		return dto;
+	}
+	
+	//SAMARA907
+	@RequestMapping("/selectAllMovieName")
+	@ResponseBody
+	public List<String> selectAllMovieName() {
+		List<String> MovieNameList = (List<String>)sqlMapClient.queryForList("movie.selectAllMovieName", null);
+		return MovieNameList;
 	}
 	
 
