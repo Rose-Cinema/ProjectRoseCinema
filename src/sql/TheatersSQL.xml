@@ -46,6 +46,6 @@
 	</select>
 	<!-- SAMARA907 -->
 	<select id="selectTheaterIDName" resultMap="theaters.IDName">
-		SELECT THEATER_ID, THEATER_NAME, AREA_ID, TOTAL_SEATS FROM THEATER_INFO
+		SELECT THEATER_ID, THEATER_NAME FROM THEATER_INFO
 	</select>
 </sqlMap>

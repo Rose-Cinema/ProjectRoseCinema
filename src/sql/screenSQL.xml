@@ -15,4 +15,9 @@
 	<select id="getScreenInfoByTheater" resultClass="screenDTO" parameterClass="int">
 		select * from SCREEN_INFO where THEATER_ID = #theater_id#
 	</select>
+	
+	<!-- SAMARA907 -->
+	<select id="selectScreenNameByID" parameterClass="int" resultClass="String">
+		SELECT SCREEN_NAME FROM SCREEN_INFO WHERE SCREEN_ID = #screen_id#
+	</select>
 </sqlMap>

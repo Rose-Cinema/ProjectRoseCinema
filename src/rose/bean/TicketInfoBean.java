@@ -3,14 +3,22 @@ package rose.bean;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import rose.DTO.SeatDTO;
 import rose.DTO.TicketDTO;
+import rose.event.dto.MovieDTO;
+import rose.theater.bean.Theater;
+import rose.timetable.bean.Timetable;
 
 @Controller
 public class TicketInfoBean {
@@ -66,9 +74,57 @@ public class TicketInfoBean {
 		return sqlMapClient.update("ticket.updateInputData", updateData);
 	}
 	
-	@RequestMapping("/ticket/{timeTable}")
-	public String ticket(@PathVariable String timeTable) {
-		return "/ticket/ticket.jsp";
+	@RequestMapping("/ticket/ticket.do")
+	public ModelAndView ticket() throws Exception{
+		System.out.println(2);
+		Timetable timeTable = (Timetable)sqlMapClient.queryForObject("timetable.getTimetableInfo", 2);
+		System.out.println(timeTable.getMovie_id());
+		System.err.println(timeTable.getScreen_id());
+		String movie = (String)sqlMapClient.queryForObject("movie.selectMovieNameByID", timeTable.getMovie_id());
+		String screen = (String)sqlMapClient.queryForObject("screen.selectScreenNameByID", timeTable.getScreen_id());
+		List<SeatDTO> seatList = (List<SeatDTO>)sqlMapClient.queryForList("seat.selectSeatByScreenID", timeTable.getScreen_id());
+		System.out.println(movie);
+		System.out.println(screen);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("timeTable", timeTable);
+		mv.addObject("movie", movie);
+		mv.addObject("screen", screen);
+		mv.addObject("seatList", seatList);
+		mv.setViewName("/ticket/test.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("/ticket/goInsertTicketOptionForm")
+	public String goInsertTicketOptionForm() {
+		return "/ticket/insertTicketOptionForm.jsp";
+	}
+	
+/*	@RequestMapping("/ticket/ticket.do")
+	public ModelAndView ticket() {
+		ModelAndView mv = new ModelAndView();
+		List<MovieDTO> movieList = (List<MovieDTO>)sqlMapClient.queryForList("movie.selectMovieIDName", null);
+		mv.addObject("movieList", movieList);
+		List<Theater> theaterList = (List<Theater>)sqlMapClient.queryForList("theaters.selectTheaterIDName", null);
+		mv.addObject("theaterList", theaterList);
+		List<Timetable> timetableList = (List<Timetable>)sqlMapClient.queryForList("timetable.selectAllTimetable", null);
+		mv.addObject("timetableList", timetableList);
+		mv.setViewName("/ticket/ticket.jsp");
+		return mv;
+	}*/
+	
+	@RequestMapping("/ticket/goTicket.do")
+	public String goTicket() {
+		return "/RoseCinema/ticket/ticket.jsp";
+	}
+	
+	@RequestMapping("/ticket/checkMovie/{moviename}")
+	@ResponseBody
+	public ModelAndView checkMovie(@PathVariable String moviename) {
+		System.out.println(moviename);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("moviename", moviename);
+		mv.setViewName("/ticket/ticket.jsp");
+		return mv;
 	}
 	
 /*	@RequestMapping("/getTicketList")

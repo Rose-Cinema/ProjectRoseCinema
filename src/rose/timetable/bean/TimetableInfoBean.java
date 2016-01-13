@@ -119,4 +119,12 @@ public class TimetableInfoBean {
 		ArrayList<String> result = (ArrayList<String>)sqlMapClient.queryForList("timetable.getPlayDatesFromTimetable", tt);
 		return result;
 	}
+	
+	//SAMARA907
+	@RequestMapping("/timetable/selectAllTimetable")
+	@ResponseBody
+	public ArrayList<Timetable> selectAllTimetable() {
+		ArrayList<Timetable> TimetableList = (ArrayList<Timetable>)sqlMapClient.queryForList("timetable.selectAllTimetable", null);
+		return TimetableList;
+	}
 }

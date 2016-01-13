@@ -52,5 +52,6 @@
 	<select id="selectDisMOVIEID">
 		SELECT DISTINCT MOVIE_ID FROM TIMETABLE
 	</select>
+	<!-- SAMARA907 -->
 	
 </sqlMap>

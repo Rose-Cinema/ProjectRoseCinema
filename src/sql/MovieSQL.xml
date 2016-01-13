@@ -63,6 +63,10 @@
 	<select id="selectMovieIDName" resultMap="movie.IDNameResultMap">
 		SELECT * FROM MOVIE_INFO
 	</select>
+	<!-- SAMARA907 -->
+	<select id="selectMovieNameByID" parameterClass="int" resultClass="String">
+		SELECT MOVIE_NAME FROM MOVIE_INFO WHERE MOVIE_ID = #movie_id#
+	</select>
 	
 	
 	
