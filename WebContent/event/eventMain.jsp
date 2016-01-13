@@ -17,6 +17,7 @@
 			<li><a href="/RoseCinema/eventMain">전체</a></li>
 			<li><a href="/RoseCinema/">로즈시네마 이벤트</a></li>
 			<li><a href="/RoseCinema/">영화예매</a></li>
+			<li><a href="/RoseCinema/">극장 안내</a></li>
 			<li><a href="/RoseCinema/">무대인사</a></li>
 			<li><a href="/RoseCinema/">당첨자 발표</a></li>
 	</ul>

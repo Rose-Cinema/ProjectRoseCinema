@@ -31,7 +31,7 @@ function initialize() {
 }
 </script> 
 
-<div class="col-xs-12">
+<div class="col-xs-10">
 <ul class="nav nav-tabs">
 	<li role="presentation"><a href="/RoseCinema/theaters/${theater_id }/timetable">상영 시간표</a></li>
 	<li role="presentation" class="active"><a href="/RoseCinema/theaters/${theater_id }/location">위치 안내</a></li>
@@ -39,14 +39,25 @@ function initialize() {
 </ul>
 </div>
 
-<body onload="initialize()"> 
- <div id="map_canvas"style="width:500px; height:300px;"></div> 
+<body onload="initialize()">
+	<table>
+		<tr>
+			<td style="width: 15;"> </td>
+			<td>
+				<div class="col-xs-8" id="map_canvas" style="width:500px; height:300px;"></div> 
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="col-xs-8">
+					<address>
+						<strong>${theater_name}</strong><br>
+						${adress}<br>
+						${phone}
+					</address>
+				</div>
+			</td>
+		</tr>
+	</table>
 </body>
-
-<address>
-  <strong>${theater_name}</strong><br>
-  ${adress}<br>
-  ${phone}
-</address>
-
 </html>

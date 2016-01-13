@@ -9,7 +9,9 @@ public class ScreenTypeUserBean {
 
 	@RequestMapping(value = "/screens/special", method = RequestMethod.GET)
 	public String viewScreenPages(){
-		return "/screens/main.jsp";
+		//return "/screens/main.jsp";
+		// 4d 페이지로 바로 연결
+		return viewScreenPages4d();
 	}
 	@RequestMapping(value = "/screens/special/3d", method = RequestMethod.GET)
 	public String viewScreenPages3d(){
