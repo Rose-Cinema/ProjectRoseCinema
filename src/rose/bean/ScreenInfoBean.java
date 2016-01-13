@@ -1,11 +1,14 @@
 package rose.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import rose.DTO.ScreenDTO;
@@ -29,4 +32,12 @@ public class ScreenInfoBean {
 		List<Integer> screenIDList = (List<Integer>)sqlMapClient.queryForList("screen.selectAllScreenID", null);
 		return screenIDList;
 	}
+	
+	@RequestMapping("/screen/theater/{theater_id}")
+	@ResponseBody
+	public List<ScreenDTO> selectScreenInfoByTheater(@PathVariable int theater_id) {
+		List<ScreenDTO> screenInfoList = (List<ScreenDTO>)sqlMapClient.queryForList("screen.getScreenInfoByTheater", theater_id);
+		return screenInfoList;
+	}	
+	
 }

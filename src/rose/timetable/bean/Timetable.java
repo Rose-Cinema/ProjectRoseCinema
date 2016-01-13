@@ -5,6 +5,7 @@ public class Timetable {
 	private int theater_id;
 	private int movie_id;
 	private int screen_id;
+	private String year_info;
 	private String date_info;
 	private String start_time;
 	private String end_time;
@@ -34,6 +35,12 @@ public class Timetable {
 	}
 	public void setScreen_id(int screen_id) {
 		this.screen_id = screen_id;
+	}
+	public String getYear_info() {
+		return year_info;
+	}
+	public void setYear_info(String year_info) {
+		this.year_info = year_info;
 	}
 	public String getDate_info() {
 		return date_info;
