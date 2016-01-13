@@ -1,6 +1,9 @@
 package rose.timetable.bean;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,8 +15,9 @@ public class TimetableViewBean {
 		return "/timetable/admin/list.jsp";
 	}
 	
-	@RequestMapping(value = "/timetable/admin/info", method = RequestMethod.GET)
-	public String viewInfoPage() {
+	@RequestMapping(value = "/timetable/admin/info/{timetable_id}", method = RequestMethod.GET)
+	public String viewInfoPage(HttpServletRequest req, @PathVariable int timetable_id) {
+		req.setAttribute("timetable_id", timetable_id);
 		return "/timetable/admin/info.jsp";
 	}
 	

@@ -7,6 +7,18 @@
 	<select id="getTimetableFast" resultClass="Timetable" parameterClass="Timetable">
 		select * from (select * from TIMETABLE where TIMETABLE.DATE_INFO = #date_info# and START_TIME > #start_time# ORDER BY START_TIME ASC) where rownum = 1
 	</select>
+	<!-- Select timetable list from now -->
+	<select id="getTimetableList" resultClass="Timetable" parameterClass="Timetable">
+		select * from TIMETABLE where TIMETABLE.DATE_INFO >= #date_info# and START_TIME > #start_time# ORDER BY START_TIME ASC
+	</select>
+	<!-- select timetable by id -->
+	<select id="getTimetableInfo" resultClass="Timetable" parameterClass="int">
+		select * from TIMETABLE where TIMETABLE_ID = #timetable_id#
+	</select>
+	<!-- Select all play dates -->
+	<select id="getPlayDatesFromTimetableAll" resultClass="String" parameterClass="String">
+		select DATE_INFO from TIMETABLE where DATE_INFO >= #date_info# group by DATE_INFO order by DATE_INFO
+	</select>
 	<!-- Select play dates -->
 	<select id="getPlayDatesFromTimetable" resultClass="String" parameterClass="Timetable">
 		select DATE_INFO from TIMETABLE where DATE_INFO >= #date_info# and THEATER_ID = #theater_id# group by DATE_INFO order by DATE_INFO
@@ -22,6 +34,10 @@
 	<!-- insert new timetable -->
 	<procedure id="setNewTimetable" parameterClass="Timetable">
 		 {call insert_timetable(#theater_id#, #movie_id#, #screen_id#, #year_info#, #date_info#, #start_time#, #end_time#, #sale_type#)}
+	</procedure>
+	<!-- update timetable -->
+	<procedure id="updateTimetable" parameterClass="Timetable">
+		 {call update_timetable(#timetable_id#, #theater_id#, #movie_id#, #screen_id#, #year_info#, #date_info#, #start_time#, #end_time#, #sale_type#)}
 	</procedure>
 	<!-- delete timetable by id -->
 	<delete id="deleteTimetable" parameterClass="int">

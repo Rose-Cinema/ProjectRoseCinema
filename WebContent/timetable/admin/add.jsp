@@ -87,6 +87,8 @@ function addTimetable(){
 		dataType : 'json',
 	    success: function(result) {
 	    	console.log(result);
+
+			$(location).attr('href', '/RoseCinema/timetable/admin/list');
 	    }
 	});
 }
