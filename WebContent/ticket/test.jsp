@@ -12,27 +12,6 @@
 	getNextTicketID();
 })
 
-function changeCount(data) {
-	 alert(data);
-	 $.each(data) {
-		 $('#seat').append(
-		"<td>"+
-			"<select>"+
-				"<option value=\""+data+"\">"+data+"</option>"+
-			"</select>"+
-		"</td>"
-		 );
-		 
-	 }
-	 $('#seat').append(
-		"<td>"+
-			"<select>"+
-				
-			"</select>"+
-		"</td>"		 
-	 )
- }
- 
 function getNextTicketID() {
 	$.ajax({
 		url:"/RoseCinema/getNextTicketID",
@@ -122,7 +101,7 @@ function selectAllMemberID() {
 </head>
 <body>
 <a href="/RoseCinema/ticket/ticket.do">asd</a>
-	<form action="/RoseCinema/ticket/insertTicket" method="post">
+	<form action="/RoseCinema/ticket/insertTicket.do" method="post">
 		<table id="insertTicketTable" border="3">
 			<tr>
 				<td>TICKETID</td>
@@ -140,11 +119,17 @@ function selectAllMemberID() {
 			</tr>
 			<tr>
 				<td>MEMBERID</td>
-				<td><input type="text" readonly="readonly" name="memberID"value="${memName }"></td>
+				<td><input type="text" onchange="" readonly="readonly" name="memberID"value="${memId } "></td>
 			</tr>
 			<tr>
 				<td>MCARDID</td>
-				<td id="tdMCARDID"></td>
+				<td>
+					<select name=mcardID>
+						<c:forEach var="mcardID" items="${mcardIDList }">
+							<option value="${mcardID }">${mcardID }</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>COUPONID</td>
@@ -166,10 +151,11 @@ function selectAllMemberID() {
 				<td>TICKETDATE</td>
 				<td><input type="text" readonly="readonly" value="${timeTable.date_info }"></td>
 			</tr>
+			<tbody>
 			<tr>
 				<td>COUNT</td>
 				<td>
-					<select id="count" onchange="changeCount(this.value)">
+					<select id="count" onchange="">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -181,15 +167,62 @@ function selectAllMemberID() {
 					</select>
 				</td>
 			</tr>
-			<tr id="seat">
+			<tr>
+				<td>
+			</tr>
+			</tbody>
+			<tr id="seatList">
 				<td>SEAT</td>
 				<td>
-					<select>
+					<select name="seat1">
+						<c:forEach var="seat" items="${seatList }">
+							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
+						</c:forEach>
+					</select>
+					<select name="seat2">
+						<c:forEach var="seat" items="${seatList }">
+							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
+						</c:forEach>
+					</select>
+					<select name="seat3">
+						<c:forEach var="seat" items="${seatList }">
+							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
+						</c:forEach>
+					</select>
+					<select name="seat4">
+						<c:forEach var="seat" items="${seatList }">
+							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
+						</c:forEach>
+					</select>
+					<select name="seat5">
+						<c:forEach var="seat" items="${seatList }">
+							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
+						</c:forEach>
+					</select>
+					<select name="seat6">
+						<c:forEach var="seat" items="${seatList }">
+							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
+						</c:forEach>
+					</select>
+					<select name="seat7">
+						<c:forEach var="seat" items="${seatList }">
+							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
+						</c:forEach>
+					</select>
+					<select name="seat8">
 						<c:forEach var="seat" items="${seatList }">
 							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
 						</c:forEach>
 					</select>
 				</td>
+	<%-- 			<td>
+					<select>
+						<c:forEach var="seat2" items="${seatList }">
+							<option value="${seat.seat_id }">${seat.line_no }${seat.seat_no }</option>
+						</c:forEach>
+					</select>
+				</td> --%>
+				
 			</tr>
 			<tr>
 				<td>BUYDATE</td>
@@ -215,6 +248,7 @@ function selectAllMemberID() {
 				<td>CANCELDATE</td>
 				<td id="tdCANCELDATE"></td>
 			</tr>
+			<input type="submit" value="예매">
 		</table>
 	</form>
 </body>

@@ -28,7 +28,7 @@
 	</insert>
 	
 	<insert id="eventInsert" parameterClass="eventDTO">
-		insert into event values(event_seq.nextval,#eventtype_id#,to_date(#estart_date#,'yyyy-mm-dd'),to_date(#eend_date#,'yyyy-mm-dd'),#event_name#,#event_image#,#timetable_id#,#coupon_id#,#event_poster#)
+		insert into event values(event_seq.nextval,#eventtype_id#,#estart_date#,#eend_date#,#event_name#,#event_image#,#timetable_id#,#coupon_id#,#event_poster#)
 	</insert>
 	
 	<select id="typeList" resultClass="typeDTO">

@@ -65,20 +65,26 @@
 		</td>
 		
 	</tr>
+	<div style="display:;">
+	
 	<tr>
 		<td>영화정보</td><!--DB 정보 출력 -->
 		<td colspan="3">
 		
-			<select name="timetable">
+			<select name="timetable_id">
 				<c:forEach var="movieDTO" items="${timeTableInfo }">
 					<option value="${movieDTO.timetable_id }" >날짜:${movieDTO.date_info}시작시간:${movieDTO.start_time}-${movieDTO.movie_name}</option>
 				</c:forEach>
 			</select>
 		</td>
 	</tr>
+	
+	</div>
 	<tr>
 		<td colspan="4" align="center"><input type="submit" value="이벤트 등록"/></td>
 	</tr>
+	
 	</table>
+	
 </form>
 </body>

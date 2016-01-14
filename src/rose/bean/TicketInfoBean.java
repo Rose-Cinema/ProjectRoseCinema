@@ -1,10 +1,13 @@
 package rose.bean;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -75,7 +78,8 @@ public class TicketInfoBean {
 	}
 	
 	@RequestMapping("/ticket/ticket.do")
-	public ModelAndView ticket() throws Exception{
+	public ModelAndView ticket(HttpSession session, HttpServletRequest request) throws Exception{
+		//request.getParameter("timetable_id");
 		System.out.println(2);
 		Timetable timeTable = (Timetable)sqlMapClient.queryForObject("timetable.getTimetableInfo", 2);
 		System.out.println(timeTable.getMovie_id());
@@ -83,9 +87,18 @@ public class TicketInfoBean {
 		String movie = (String)sqlMapClient.queryForObject("movie.selectMovieNameByID", timeTable.getMovie_id());
 		String screen = (String)sqlMapClient.queryForObject("screen.selectScreenNameByID", timeTable.getScreen_id());
 		List<SeatDTO> seatList = (List<SeatDTO>)sqlMapClient.queryForList("seat.selectSeatByScreenID", timeTable.getScreen_id());
+		int memberid = (int)session.getAttribute("memNum");
+		System.out.println("memberid"+memberid);
+		int cardCount = (int)sqlMapClient.queryForObject("mcard.selectMcardCount", memberid);
+		ModelAndView mv = new ModelAndView();
+		if(cardCount != 0) {
+			List<Integer> mcardidList = (List<Integer>)sqlMapClient.queryForList("mcard.selectMcardIDByMemberID", memberid);
+			mv.addObject("mcardIDList", mcardidList);
+		}
+		System.out.println(cardCount);
 		System.out.println(movie);
 		System.out.println(screen);
-		ModelAndView mv = new ModelAndView();
+		
 		mv.addObject("timeTable", timeTable);
 		mv.addObject("movie", movie);
 		mv.addObject("screen", screen);
@@ -125,6 +138,34 @@ public class TicketInfoBean {
 		mv.addObject("moviename", moviename);
 		mv.setViewName("/ticket/ticket.jsp");
 		return mv;
+	}
+	
+	@RequestMapping("/ticket/insertTicket.do")
+	public String insertTicket(HttpServletRequest request) {
+		TicketDTO ticket = new TicketDTO();
+		String ticketID = request.getParameter("ticketID");
+		int ticketid = Integer.parseInt(ticketID);
+	
+		ticket.setNo(request.getParameter("NO"));
+		ticket.setScreenID(Integer.parseInt(request.getParameter("SCREENID")));
+		ticket.setMemberID(Integer.parseInt(request.getParameter("MEMBERID")));
+		ticket.setMcardID(Integer.parseInt(request.getParameter("MCARDID")));
+		ticket.setMovie(request.getParameter("MOVIE"));
+		ticket.setTheater(request.getParameter("THEATER"));
+		ticket.setScreen(request.getParameter("SCREEN"));
+		ticket.setCount(request.getParameter("COUNT"));
+		ticket.setSeat1(request.getParameter("SEAT1"));
+		ticket.setSeat2(request.getParameter("SEAT2"));
+		ticket.setSeat3(request.getParameter("SEAT3"));
+		ticket.setSeat4(request.getParameter("SEAT4"));
+		ticket.setSeat5(request.getParameter("SEAT5"));
+		ticket.setSeat6(request.getParameter("SEAT6"));
+		ticket.setSeat7(request.getParameter("SEAT7"));
+		ticket.setSeat8(request.getParameter("SEAT8"));
+		
+		sqlMapClient.insert("ticket.insertTicket", ticket);
+		return "/movie/movielist.do";
+		
 	}
 	
 /*	@RequestMapping("/getTicketList")

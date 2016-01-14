@@ -6,5 +6,9 @@
 	<select id="selectMcardIDByMemberID"  parameterClass ="int" resultClass="int">
 		SELECT MCARD_ID FROM MCARD_INFO WHERE MEMBER_ID=#MEMBER_ID#
 	</select>
+	
+	<select id="selectMcardCount" parameterClass="int" resultClass="int">
+		SELECT COUNT(*) FROM MCARD_INFO WHERE MEMBER_ID=#member_id#
+	</select>
 
 </sqlMap>

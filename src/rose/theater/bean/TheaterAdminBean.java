@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -49,13 +50,13 @@ public class TheaterAdminBean {
 	}
 	
 	@RequestMapping(value = "/theaters/admin/upload_image/{theater_id}", method = RequestMethod.POST)
+	@ResponseBody
 	public String setTheaterUploadImage(MultipartHttpServletRequest req, @PathVariable("theater_id") int theater_id) throws Exception {
 		MultipartFile file = req.getFile("img_file");
 		//String ori_name = file.getOriginalFilename();
 		//String file_ext = ori_name.substring(ori_name.lastIndexOf('.') + 1,ori_name.length());
 		String name = "/theaters/image/"+theater_id+".jpg";
 		name = req.getSession().getServletContext().getRealPath(name);
-		System.out.println(name);
 		File sf = new File(name);
 		file.transferTo(sf);
 		

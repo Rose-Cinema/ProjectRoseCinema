@@ -143,7 +143,7 @@ textarea {width:500px; height:80px; overflow:visible;}
    				<c:forEach var="commentDto" items="${commentList}">
    				
    					<b>작성자</b> : ${commentDto.id} &nbsp;
-   						<b>작성일</b> : ${commentDto.reg_date }&nbsp;
+   					<b>작성일</b> : <fmt:formatDate value="${commentDto.reg_date }" pattern="yyyy.MM.dd"/> <br/>
    					<b>내용</b> : ${commentDto.content } &nbsp;
    					<b>별점</b> : ${commentDto.score} &nbsp;&nbsp;<br/>
    				

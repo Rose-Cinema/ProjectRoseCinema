@@ -31,7 +31,7 @@
 	<div>
 		<ul class="nav navbar-nav">
 			<li><a href="/RoseCinema/movie/movielist.do">영화</a></li>
-			<li><a href="/RoseCinema">예매</a></li>
+			<li><a href="/RoseCinema/ticket/test.jsp">예매</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">극장<span class="caret"></span></a>
 				<ul class="dropdown-menu">
