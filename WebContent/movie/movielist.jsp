@@ -23,7 +23,7 @@ th, td {border: 1px solid #006666; font-size: 14;}
 <body>
 
 <font size="5">&nbsp; &nbsp; &nbsp; &nbsp; <b></b></font><p>           
-<table cellpadding="12" cel lspacing="10"  align="center" >
+<table cellpadding="12" cellspacing="10"  align="center" >
 <c:forEach begin="0" end="${(fn:length(list) + 3) / 4 - 1}" var="row">   
 <tr>             
 	<c:forEach begin="0" end="3" var="col">

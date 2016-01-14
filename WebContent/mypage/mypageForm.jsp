@@ -51,8 +51,7 @@
 <input type="button" value="취소 내역" onclick="window.open('/RoseCinema/cancelList', 'login', 'width = 500, height = 500'); return false">
 
 <br/><hr>
-*현장에서 멤버쉽없이 예매를 하셨나요? 영수증 하단의 예매번호를 등록하고 내 무비 히스토리에 기록&감상평을 써보세요!
-<input type="button" value="영수증번호 등록하기"><br/>
+
 
 
 
