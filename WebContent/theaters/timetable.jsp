@@ -101,7 +101,7 @@ function addCells(movie_id, screens){
     });
 }
 function sendTicketPage(timetable_id){
-	$(location).attr('href', '/RoseCinema/ticket/'+timetable_id);
+	$(location).attr('href', '/RoseCinema/ticket/ticket.do?timetable_id='+timetable_id);
 	//alert('예매 시스템 개발 중 : 문의 김준영');
 	//console.log("click : "+timetable_id);
 }
