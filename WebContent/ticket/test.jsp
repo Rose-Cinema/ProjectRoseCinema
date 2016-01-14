@@ -101,7 +101,7 @@ function selectAllMemberID() {
 </head>
 <body>
 <a href="/RoseCinema/ticket/ticket.do">asd</a>
-	<form action="/RoseCinema/ticket/insertTicket" method="post">
+	<form action="/RoseCinema/ticket/insertTicket.do" method="post">
 		<table id="insertTicketTable" border="3">
 			<tr>
 				<td>TICKETID</td>
@@ -119,11 +119,17 @@ function selectAllMemberID() {
 			</tr>
 			<tr>
 				<td>MEMBERID</td>
-				<td><input type="text" readonly="readonly" name="memberID"value="${memName }"></td>
+				<td><input type="text" onchange="" readonly="readonly" name="memberID"value="${memId } "></td>
 			</tr>
 			<tr>
 				<td>MCARDID</td>
-				<td id="tdMCARDID"></td>
+				<td>
+					<select name=mcardID>
+						<c:forEach var="mcardID" items="${mcardIDList }">
+							<option value="${mcardID }">${mcardID }</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>COUPONID</td>
@@ -242,6 +248,7 @@ function selectAllMemberID() {
 				<td>CANCELDATE</td>
 				<td id="tdCANCELDATE"></td>
 			</tr>
+			<input type="submit" value="예매">
 		</table>
 	</form>
 </body>
