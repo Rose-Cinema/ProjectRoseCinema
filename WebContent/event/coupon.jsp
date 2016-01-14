@@ -2,13 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<jsp:include page="/top_nav.jsp"/>
+
 <font size="5">쿠폰 테이블</font>
 <form action="/RoseCinema/couponPro" method="post">
 	<table border="1" align="center">
 		<tr>
 
-			<td>쿠폰번호</td>
-		    <td><input type="text" name="coupon_id"></td>
+			
 			<td>쿠폰이름</td>
 		 	<td><input type="text" name="coupon_name"></td>
 		</tr>
@@ -26,6 +28,7 @@
 					<option value="${typeDto.coupon_num}">${typeDto.coupon_name}</option>
 				</c:forEach>
 			</select>
+			<a href="/RoseCinema/couponType" >쿠폰타입등록</a>
 			</td>
 
 		</tr>
