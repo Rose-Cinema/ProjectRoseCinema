@@ -4,14 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<jsp:include page="/top_nav.jsp"/>
+
 <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-포인트 현황
-<br/>
-현재 보유 포인트: [DB:mpoint_history의 point데이터 이용]P
+
+
 <br/>
 <hr>
 
@@ -75,7 +76,7 @@
 	 [DB:mpoint테이블에서 게시판형태로 쫘르륵 불러오기!!&&select box에 따라 타입별로 불러오기 기능도!]
 	 
 	 <tr>
-	 	<td>일자</td><td>이용내용</td><td>이용금액</td><td>적립포인트</td><td>사용포인트</td><td>구분</td>
+	 	<td>일자</td><td>이용내용</td><td>이용금액</td><td>적립/사용포인트</td><td>구분</td>
 	 </tr>
 	 
 	 
@@ -86,8 +87,27 @@
   			<td>${dto.pay_content}</td>
   			<td>${dto.pay_sum}</td>
   			<td> ${dto.change_point} </td>
-  			<td>${dto.change_point}</td>
-  			<td>${dto.change_type}</td> 			
+  			
+  			<c:if test="${dto.change_type ==1}">
+  				<td>영화예매 적립</td>
+  			</c:if>
+  			
+  			<c:if test="${dto.change_type ==2}">
+  				<td>이벤트 적립</td>
+  			</c:if>
+  			
+  			<c:if test="${dto.change_type ==3}">
+  				<td>영화예매 사용</td>
+  			</c:if>
+  			
+  			<c:if test="${dto.change_type ==4}">
+  				<td>매점 사용</td>
+  			</c:if>
+  			
+  			<c:if test="${dto.change_type ==5}">
+  				<td>이벤트 사용</td>
+  			</c:if>		
+  		
   		</tr>		
   		</c:forEach>
 	 

@@ -14,7 +14,7 @@
 <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
    	<ul class="nav navbar-nav">
-			<li><a href="/RoseCinema/eventMain">전체</a></li>
+				<li><a href="/RoseCinema/eventMain">전체</a></li>
 			<li><a href="/RoseCinema/">로즈시네마 이벤트</a></li>
 			<li><a href="/RoseCinema/">영화예매</a></li>
 			<li><a href="/RoseCinema/">무대인사</a></li>

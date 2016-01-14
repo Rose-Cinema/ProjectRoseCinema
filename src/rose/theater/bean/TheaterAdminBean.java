@@ -34,6 +34,8 @@ public class TheaterAdminBean {
 		req.setAttribute("area_id", theater.getArea_id());
 		req.setAttribute("adress", theater.getAdress());
 		req.setAttribute("phone", theater.getPhone());
+		req.setAttribute("location_x", theater.getLocation_x());
+		req.setAttribute("location_y", theater.getLocation_y());
 		req.setAttribute("total_screen", theater.getTotal_screen());
 		req.setAttribute("total_seats", theater.getTotal_seats());
 		
@@ -45,16 +47,20 @@ public class TheaterAdminBean {
 
 		return  "/theaters/admin/add.jsp";
 	}
-	/*
-	@RequestMapping(value = "/theaters/admin/upload_image", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/theaters/admin/upload_image/{theater_id}", method = RequestMethod.POST)
 	public String setTheaterUploadImage(MultipartHttpServletRequest req, @PathVariable("theater_id") int theater_id) throws Exception {
-		MultipartFile file = req.getFile("theater_image");
-		String name = file.getOriginalFilename();
-		File sf = new File("save/"+name);
+		MultipartFile file = req.getFile("img_file");
+		//String ori_name = file.getOriginalFilename();
+		//String file_ext = ori_name.substring(ori_name.lastIndexOf('.') + 1,ori_name.length());
+		String name = "/theaters/image/"+theater_id+".jpg";
+		name = req.getSession().getServletContext().getRealPath(name);
+		System.out.println(name);
+		File sf = new File(name);
 		file.transferTo(sf);
 		
-		return "/1130/test.jsp";
+		return "upload image";
 	}
-	*/
+	
 	
 }

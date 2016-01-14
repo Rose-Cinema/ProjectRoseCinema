@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<jsp:include page="/top_nav.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -15,7 +16,6 @@ Calendar cal = Calendar.getInstance();
 int nowYear=cal.get(Calendar.YEAR);
 %>
 
-  [DB:mgrade_history테이블에서 정보 끌어다와서 보여주기!!!]
   
   <br/>
  
@@ -81,7 +81,7 @@ int nowYear=cal.get(Calendar.YEAR);
 
   
   
-  <a href="memgradeinfoForm.jsp">멤버쉽 등급 기준표</a>
+  <a href="/RoseCinema/mypage/memgradeinfoForm.jsp">멤버쉽 등급 기준표</a>
   
   
   

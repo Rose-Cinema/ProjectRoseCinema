@@ -178,6 +178,10 @@ public class MemberBean {
 	public String mypageform(MemberInfoDTO dto, HttpServletRequest request, HttpSession session){
 		
 		String id = (String)session.getAttribute("memId");
+		
+		if( id == null)
+			return "/need_login.jsp";
+		
 		id += "_hitory";
 		
 		
@@ -207,6 +211,10 @@ public class MemberBean {
 	@RequestMapping("/gradehistoryForm")
 	public String gradehistoryform(HttpSession session , HttpServletRequest request){	
 		String id = (String)session.getAttribute("memId");
+
+		if( id == null)
+			return "/need_login.jsp";
+		
 		id += "_hitory";
 		List list = sqlMapClient.queryForList("mypage.mgradehistory", id);
 		

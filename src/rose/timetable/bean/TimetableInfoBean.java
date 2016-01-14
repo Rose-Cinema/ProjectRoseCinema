@@ -25,8 +25,15 @@ public class TimetableInfoBean {
 	@RequestMapping(value = "/timetable", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Timetable> getTimetables() {
-		List<Timetable> timetable_list = (List<Timetable>)sqlMapClient.queryForList("timetable.getTimetables", null);
+		List<Timetable> timetable_list = (List<Timetable>)sqlMapClient.queryForList("timetable.getTimetableList", null);
 		return timetable_list;
+	}
+	
+	@RequestMapping(value = "/timetable/{timetable_id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Timetable getTimetablesInfo(@PathVariable("timetable_id") int timetable_id) {
+		Timetable timetable = (Timetable)sqlMapClient.queryForObject("timetable.getTimetableInfo", timetable_id);
+		return timetable;
 	}
 	
 	@RequestMapping(value = "/timetable/theater/{theater_id}", method = RequestMethod.GET)
@@ -71,16 +78,35 @@ public class TimetableInfoBean {
 		return "add";
 	}
 	
-	@RequestMapping(value = "/timetable", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/timetables", method = RequestMethod.PUT)
 	@ResponseBody
-	public String deleteTimetable(@PathVariable int timetable_id) {
+	public String editTimetable(@RequestBody Timetable timetable) {
+		sqlMapClient.queryForObject("timetable.updateTimetable", timetable);
+		return "edit";
+	}
+	
+	@RequestMapping(value = "/timetables/{timetable_id}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public String deleteTimetable(@PathVariable("timetable_id") int timetable_id) {
 		sqlMapClient.queryForObject("timetable.deleteTimetable", timetable_id);
 		return "delete";
 	}
 	
+	@RequestMapping(value = "/timetable/dates", method = RequestMethod.GET)
+	@ResponseBody
+	public ArrayList<String> getDatesAll() {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
+		Calendar today = Calendar.getInstance();
+		String date = sdf.format(today.getTime());
+		
+		ArrayList<String> result = (ArrayList<String>)sqlMapClient.queryForList("timetable.getPlayDatesFromTimetableAll", date);
+		return result;
+	}
+	
 	@RequestMapping(value = "/timetable/dates/{theater_id}", method = RequestMethod.GET)
 	@ResponseBody
-	public ArrayList<String> getDates(@PathVariable("theater_id") int theater_id) {
+	public ArrayList<String> getDatesTheater(@PathVariable("theater_id") int theater_id) {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
 		Calendar today = Calendar.getInstance();
@@ -92,5 +118,13 @@ public class TimetableInfoBean {
 		
 		ArrayList<String> result = (ArrayList<String>)sqlMapClient.queryForList("timetable.getPlayDatesFromTimetable", tt);
 		return result;
+	}
+	
+	//SAMARA907
+	@RequestMapping("/timetable/selectAllTimetable")
+	@ResponseBody
+	public ArrayList<Timetable> selectAllTimetable() {
+		ArrayList<Timetable> TimetableList = (ArrayList<Timetable>)sqlMapClient.queryForList("timetable.selectAllTimetable", null);
+		return TimetableList;
 	}
 }

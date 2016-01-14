@@ -3,9 +3,10 @@
 <title>상영 시간표 등록</title>
 
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<jsp:include page="/admin/top_nav.jsp"/>
+<script type="text/javascript">
+</script>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
@@ -87,16 +88,21 @@ function addTimetable(){
 		dataType : 'json',
 	    success: function(result) {
 	    	console.log(result);
+
+	    	backList();
 	    }
 	});
 }
 
+function backList(){
+	$(location).attr('href', '/RoseCinema/timetable/admin/list');
+}
 
 </script>
 </head>
 
 <html>
-<div class="col-xs-12">
+<div class="col-xs-10">
 	<table class="table">
 		<tr>
 			<td>
@@ -185,8 +191,8 @@ function addTimetable(){
 		<tr>
 			<td>
 				<div style="text-align: right">
-					<button type="button" class="btn btn-success" onClick="return addTimetable();">승인</button>
-					<button type="button" class="btn btn-danger">취소</button>
+					<button type="button" class="btn btn-success" onClick="return addTimetable();">추가</button>
+					<button type="button" class="btn btn-warning" onClick="return backList();">돌아가기</button>
 				</div>
 			</td>
 		</tr>

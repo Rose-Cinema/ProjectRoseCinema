@@ -1,23 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<!-- jstl -->
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<jsp:include page="/top_nav.jsp"/>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-**마이페이지**
+**My page**
 
 
 
 <br>
 
-	<font size = "8"> 회원이름: ${memName} </font> 
+	<font size = "5"> 회원이름: ${memName} </font> 
 	<br/>
-	<font size="5">회원아이디: ${memId} , ${memNum}</font>
+	<font size="5">회원아이디: ${memId} </font>
 	<hr>
 	올해(${nowYear})년도 고객님의 등급은 [[[${grade}]]]입니다.<br/>
 	
@@ -39,49 +44,17 @@
 	
 	<hr>
 	
-**내 영화 내역**  <input type="button" value="나의 무비 히스토리">  <br/>
+**내 영화 내역**  <br/>
+<input type="button" value="나의 무비히스토리" onclick="window.open('/RoseCinema/movieHistory', 'login', 'width = 500, height = 500'); return false">
+<br/>
+<input type="button" value="예매 내역" onclick="window.open('/RoseCinema/reserveList', 'login', 'width = 500, height = 500'); return false">
+<input type="button" value="취소 내역" onclick="window.open('/RoseCinema/cancelList', 'login', 'width = 500, height = 500'); return false">
 
+<br/><hr>
 *현장에서 멤버쉽없이 예매를 하셨나요? 영수증 하단의 예매번호를 등록하고 내 무비 히스토리에 기록&감상평을 써보세요!
 <input type="button" value="영수증번호 등록하기"><br/>
 
-<input type="button" value="예매 내역" onclick="window.open('/RoseCinema/reserveList', 'login', 'width = 500, height = 500'); return false">
 
-
-
-
-
-<hr> 아이프레임으로 처리한것<br/>	
-<input type="button" value="예매내역"> <input type="button" value="지난내역"> <input type="button" value="취소내역">
-	<br />	
-		 <iframe width = "800" height="400" frameborder="1" scrolling="auto" src="mypage/myMovie/reserveList.jsp">
-
-	<hr>
-	
-	**나의 무비 히스토리<br/>
-	
-	내가 본 영화 리스트 - 각 영화마다 상세정보 보기, 별점/감상평 달기 기능, 상세정보보기 페이지 추가해야함!!! 페이지 추가할 것 많음!!
-	
-	<br/><br/>
-	
-	
-	**현장에서 멤버쉽없이 예매를 하셨나요? 영수증 하단의 예매번호를 등록하고 내 무비 히스토리에 기록&감상평을 써보세요!<br/>
-	등록하기
-	<table border="1">
-		<tr>
-			<td>영수증 번호</td> <td><input type="text" size="15"></td>
-		</tr>
-		<tr>
-			<td colspan="2">
-			<input type="button" value="등록하기">[DB:누르면 <---DB에서 조정 필요할듯!!! 예매 테이블에서 비회원구매 구분 컬럼이 다시 회원구매로 바뀌는 등으로]
-			</td>
-		</tr>
-	</table>
-	
-	
-	<c:foreach>
-		
-	</c:foreach>
-<form></form>
 
 </body>
 </html>

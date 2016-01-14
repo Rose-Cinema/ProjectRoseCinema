@@ -2,7 +2,7 @@
 <html>
 
 
-<div class="col-xs-12">
+<div class="col-xs-10">
 <ul class="nav nav-tabs">
 	<li role="presentation"><a href="/RoseCinema/theaters/${theater_id }/timetable">상영 시간표</a></li>
 	<li role="presentation"><a href="/RoseCinema/theaters/${theater_id }/location">위치 안내</a></li>
@@ -11,9 +11,12 @@
 </div>
 
 
-<div>
+<div class="col-xs-10">
 	<table class="table" >
 		<thead>
+		    <tr class="active">
+	    		<th colspan="5"><h4>관람료 안내</h4></th>
+	    	</tr>
 			<tr>
 				<th scope="col" style="width: 20%;">구분</th>
 				<th scope="col" style="width: 20%;">상영시간</th>
@@ -106,7 +109,8 @@
 		</tbody>
 	</table>
 </div>
-<div>
+
+<div class="col-xs-10">
 	<table class="table">
 		<thead>
 		    <tr class="active">

@@ -153,6 +153,22 @@ public class MovieBean {
 		List<String> MovieNameList = (List<String>)sqlMapClient.queryForList("movie.selectAllMovieName", null);
 		return MovieNameList;
 	}
+	//SAMRA907
+	@RequestMapping("/selectMovieIDName")
+	@ResponseBody
+	public List<MovieInfoDTO> selectMovieIDName() {
+		System.out.println("!@#!@#@");
+		System.out.println("!@#!@#@");
+		System.out.println("!@#!@#@");
+		System.out.println("!@#!@#@");
+		System.out.println("!@#!@#@");
+		System.out.println("!@#!@#@");
+		System.out.println("!@#!@#@");
+		System.out.println("!@#!@#@");
+		System.out.println("!@#!@#@");
+		List<MovieInfoDTO> movieList = (List<MovieInfoDTO>)sqlMapClient.queryForList("movie.selectMovieIDName", null);
+		return movieList;
+	}
 	
 	//mingyeong
 	@RequestMapping("/movies")

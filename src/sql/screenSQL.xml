@@ -12,7 +12,23 @@
 	</select>
 	
 	<!-- mingyoeng -->
+	<select id="getScreenInfo" resultClass="screenDTO" parameterClass="int">
+		select * from SCREEN_INFO where SCREEN_ID = #screen_id#
+	</select>
 	<select id="getScreenInfoByTheater" resultClass="screenDTO" parameterClass="int">
 		select * from SCREEN_INFO where THEATER_ID = #theater_id#
 	</select>
+
+	<procedure id="setNewScreen" parameterClass="screenDTO">
+		 {call insert_screen(#theater_id#, #screen_name#, #screen_type#, #seat_cnt#)}
+	</procedure>
+	<procedure id="deleteScreen" parameterClass="int">
+		{call delete_screen(#screen_id#)}
+	</procedure>
+	
+	<!-- SAMARA907 -->
+	<select id="selectScreenNameByID" parameterClass="int" resultClass="String">
+		SELECT SCREEN_NAME FROM SCREEN_INFO WHERE SCREEN_ID = #screen_id#
+	</select>
+
 </sqlMap>

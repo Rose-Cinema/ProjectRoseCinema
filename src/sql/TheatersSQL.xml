@@ -3,6 +3,13 @@
 <sqlMap namespace="theaters">
 	
 	<typeAlias alias="Theater" type="rose.theater.bean.Theater"/>
+	
+	<!-- SAMARA907 -->
+	<resultMap class="rose.theater.bean.Theater" id="IDName">
+		<result property="theater_id" column="THEATER_ID"/>
+		<result property="theater_name" column="THEATER_NAME"/>
+	</resultMap>
+	
 	<!-- Select All -->
 	<select id="getTheaterList" resultClass="Theater" >
 		select * from THEATER_INFO
@@ -12,22 +19,16 @@
 		select * from THEATER_INFO where theater_id = #theater_id#
 	</select>
 	<!-- insert new theater -->
-	<insert id="setNewTheater" parameterClass="Theater">
-		exec insert_theater(#theater_name#, #area_id#, #adress#, #phone#, #location_x#, #location_y#)
-	</insert>
-	
-	<update id="updateTheaterInfo" parameterClass="Theater">
-		update THEATER_INFO set THEATER_NAME = #theater_name#, AREA_ID = #area_id#, ADRESS = #adress#, PHONE = #phone#, LOCATION_X = #location_x#, LOCATION_Y = #location_y# where THEATER_ID = #theater_id#
-	</update>
+	<procedure id="setNewTheater" parameterClass="Theater">
+		{call insert_theater(#theater_name#, #area_id#, #adress#, #phone#, #location_x#, #location_y#)}
+	</procedure>
+	<procedure id="updateTheaterInfo" parameterClass="Theater">
+		{call update_theater( #theater_id#, #theater_name#, #area_id#, #adress#, #phone#, #location_x#, #location_y#)}
+	</procedure>
 	
 	<delete id="deleteTheaterInfo" parameterClass="int">
 		delete from THEATER_INFO where THEATER_ID = #theater_id#
 	</delete>
-	
-	<update id="updateTheaterImage" parameterClass="Theater">
-		update THEATER_INFO set IMAGE = #image# where THEATER_ID = #theater_id#
-	</update>
-	
 	
 	<!-- SAMARA907 -->
 	<select id="selectTheaterNameByScreenID" parameterClass="String" resultClass="String">
@@ -36,5 +37,9 @@
 	<!-- SAMARA907 -->
 	<select id="selectAllTheaterName" resultClass="String">
 		SELECT THEATER_NAME FROM THEATER_INFO
+	</select>
+	<!-- SAMARA907 -->
+	<select id="selectTheaterIDName" resultMap="theaters.IDName">
+		SELECT THEATER_ID, THEATER_NAME FROM THEATER_INFO
 	</select>
 </sqlMap>
