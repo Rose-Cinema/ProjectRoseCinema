@@ -39,8 +39,9 @@
 		select * from coupon_num
 	</select>
 	<select id="couponlist" resultClass="couponDTO">
-		select cou.*, num.used_date from coupon cou, coupon_num num where cou.coupon_id=num.coupon_id
+		select * from coupon
 	</select>
+	
 	
 	
 	<select id="eventTypeList" resultClass="eventTypeDTO">
