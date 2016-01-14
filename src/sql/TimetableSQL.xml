@@ -25,11 +25,11 @@
 	</select>
 	<!-- Select With Theater -->
 	<select id="getTimetablebyTheater" resultClass="Timetable" parameterClass="Timetable">
-		select * from TIMETABLE where THEATER_ID = #theater_id# and DATE_INFO = #date_info# and START_TIME > #start_time# order by MOVIE_ID
+		select * from TIMETABLE where THEATER_ID = #theater_id# and DATE_INFO = #date_info# and START_TIME > #start_time#  ORDER BY START_TIME ASC
 	</select>
 	<!-- Select With Screen -->
 	<select id="getTimetableByScreen" resultClass="Timetable" parameterClass="Timetable">
-		select * from TIMETABLE where SCREEN_ID = #screen_id# and DATE_INFO = #date_info# and START_TIME > #start_time#
+		select * from TIMETABLE where SCREEN_ID = #screen_id# and DATE_INFO = #date_info# and START_TIME > #start_time# ORDER BY START_TIME ASC
 	</select>
 	<!-- insert new timetable -->
 	<procedure id="setNewTimetable" parameterClass="Timetable">
