@@ -79,6 +79,7 @@ public class TicketInfoBean {
 	
 	@RequestMapping("/ticket/ticket.do")
 	public ModelAndView ticket(HttpSession session, HttpServletRequest request) throws Exception{
+		//request.getParameter("timetable_id");
 		System.out.println(2);
 		Timetable timeTable = (Timetable)sqlMapClient.queryForObject("timetable.getTimetableInfo", 2);
 		System.out.println(timeTable.getMovie_id());
