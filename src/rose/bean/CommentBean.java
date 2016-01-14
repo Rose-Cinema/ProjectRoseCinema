@@ -1,5 +1,7 @@
 package rose.bean;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,15 +20,18 @@ public class CommentBean {
 	private SqlMapClientTemplate sqlMapClient;
 	
 	@RequestMapping("/movie/commentinsert.do")
-	public ModelAndView comment(HttpSession session, CommentInfoDTO dto )throws Exception{
-		//dto.setId((String)session.getAttribute("memId")); // 회원정보 연결후 .. 사용
-		dto.setId("test");
+	public ModelAndView comment(HttpSession session, CommentInfoDTO dto ,String movie_id)throws Exception{
+		String memId = (String)session.getAttribute("memId");
+		if(memId != null){
+			dto.setId(memId); // 회원정보 연결후 .. 사용
+		}else{
+			dto.setId("guest");
+		}
+		//dto.setId("test");
 		sqlMapClient.insert("comment.commentinsert", dto);
-	
-		
 		ModelAndView mv = new ModelAndView();
-				
-		mv.setViewName("/comment/commentinsert.jsp");
+		
+		mv.setViewName("/movie/moviecontent.do?movie_id"+movie_id);
 		return mv;
 	}
 

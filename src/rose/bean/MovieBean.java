@@ -105,13 +105,13 @@ public class MovieBean {
 		
 		List<MovieInfoDTO> list = sqlMapClient.queryForList("movie.listMovie", null);	
 		
-		System.out.println(list.size());
+		System.out.println(list.size()); //∆Ú¡°
 		for (int i = 0; i < list.size(); i++) {
 			String score;
 			if (sqlMapClient.queryForObject("comment.getAvgScore", list.get(i).getMovie_id()) == null) {
 				score = "0";
 			}else {
-				score = (String)sqlMapClient.queryForObject("comment.getAvgScore", list.get(i).getMovie_id());
+				score = (String)sqlMapClient.queryForObject("comment.getAvgScore", list.get(i).getMovie_id());				
 			}
 			list.get(i).setScore(score);
 		}

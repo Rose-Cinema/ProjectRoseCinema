@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="getAvgScore" resultClass="String" parameterClass="int">
-		select avg(score) from comment_info where movie_id=#movie_id#
+		select trunc(avg(score),1) from comment_info where movie_id=#movie_id#
 	</select>
 	
 	

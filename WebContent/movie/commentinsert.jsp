@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-한줄평 등록 완료
-</body>
-</html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
+  			  <c:forEach var="commentDto" items="${commentList}">
+   					<b>작성자</b> : ${commentDto.id} &nbsp;
+   						<b>작성일</b> : ${commentDto.reg_date }&nbsp;
+   					<b>내용</b> : ${commentDto.content } &nbsp;
+   					<b>별점</b> : ${commentDto.score} &nbsp;&nbsp;<br/>
+   				</c:forEach>
