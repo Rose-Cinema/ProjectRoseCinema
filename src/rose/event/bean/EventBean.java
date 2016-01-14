@@ -1,6 +1,8 @@
 package rose.event.bean;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,9 +39,21 @@ public class EventBean{
 		
 		//폼에서 전달받은 파라미터를 DTO에 저장 
 		EventDTO dto = new EventDTO();
+		
 		dto.setEventtype_id(Integer.parseInt(request.getParameter("eventtype_id")));
-		dto.setEstart_date(request.getParameter("estart_date"));
-		dto.setEend_date(request.getParameter("eend_date"));
+		
+		String s = request.getParameter("estart_date");
+		s = s.replace('-','/');
+		
+		String e = request.getParameter("eend_date");
+		e = e.replace('-','/');
+		
+		Date start = new Date(s);
+		Date end = new Date(e)
+				;
+		System.out.println(start.getTime());
+		dto.setEstart_date(new Timestamp(start.getTime()));
+		dto.setEend_date(new Timestamp(end.getTime()));
 		dto.setEvent_name(request.getParameter("event_name"));
 		dto.setCoupon_id(Integer.parseInt(request.getParameter("coupon_id")));
 		dto.setTimetable_id(Integer.parseInt(request.getParameter("timetable_id")));

@@ -1,12 +1,13 @@
 package rose.event.dto;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class EventDTO {
 	private int event_id;
 	private int eventtype_id;
-	private String estart_date;
-	private String eend_date;
+	private Timestamp estart_date;
+	private Timestamp eend_date;
 	private String event_name;
 	private String event_image;
 	private int timetable_id;
@@ -34,16 +35,17 @@ public class EventDTO {
 	}
 	
 	
-	public String getEstart_date() {
+	
+	public Timestamp getEstart_date() {
 		return estart_date;
 	}
-	public void setEstart_date(String estart_date) {
+	public void setEstart_date(Timestamp estart_date) {
 		this.estart_date = estart_date;
 	}
-	public String getEend_date() {
+	public Timestamp getEend_date() {
 		return eend_date;
 	}
-	public void setEend_date(String eend_date) {
+	public void setEend_date(Timestamp eend_date) {
 		this.eend_date = eend_date;
 	}
 	public String getEvent_name() {
