@@ -81,7 +81,7 @@ public class TicketInfoBean {
 	public ModelAndView ticket(HttpSession session, HttpServletRequest request) throws Exception{
 		//request.getParameter("timetable_id");
 		System.out.println(2);
-		Timetable timeTable = (Timetable)sqlMapClient.queryForObject("timetable.getTimetableInfo", 2);
+		Timetable timeTable = (Timetable)sqlMapClient.queryForObject("timetable.getTimetableInfo", Integer.parseInt(request.getParameter("timetable_id")));
 		System.out.println(timeTable.getMovie_id());
 		System.err.println(timeTable.getScreen_id());
 		String movie = (String)sqlMapClient.queryForObject("movie.selectMovieNameByID", timeTable.getMovie_id());
@@ -141,31 +141,77 @@ public class TicketInfoBean {
 	}
 	
 	@RequestMapping("/ticket/insertTicket.do")
-	public String insertTicket(HttpServletRequest request) {
+	public String insertTicket(HttpServletRequest request, HttpSession session) {
 		TicketDTO ticket = new TicketDTO();
-		String ticketID = request.getParameter("ticketID");
+
+		String ticketID = request.getParameter("ticket_id");
 		int ticketid = Integer.parseInt(ticketID);
-	
-		ticket.setNo(request.getParameter("NO"));
+		ticket.setTicketID(ticketid);
+		
+		String screenID = request.getParameter("screen_id");
+		int screenid = Integer.parseInt(screenID);
+/*		ticket.ti
+		
+		String memberID = request.getParameter("member_id");
+		int memberid = Integer.parseInt(memberID);
+		
+		int no = ticketid+screenid+memberid;*/
+		
+		System.out.println("아오씨TLTLTLTLTL");
 		ticket.setScreenID(Integer.parseInt(request.getParameter("SCREENID")));
-		ticket.setMemberID(Integer.parseInt(request.getParameter("MEMBERID")));
-		ticket.setMcardID(Integer.parseInt(request.getParameter("MCARDID")));
+		System.out.println("아아아아아아아앙");
+		int memberid = (int)session.getAttribute("memNum");
+		System.out.println("ㅇ나아아아아아");
+		
+		ticket.setMemberID(memberid);
+		System.out.println("아아아아");
+		
+			if(request.getAttribute("MCARDID") == null) {
+				System.out.println("tlqkfdasd");
+			}
+			
+			System.out.println(request.getParameter("MCARDID"));
+			System.out.println(request.getParameter("MCARDID"));
+			System.out.println(request.getParameter("MCARDID"));
+			System.out.println(request.getParameter("MCARDID"));
+/*		if (mcardid != null || mcardid != "") {
+				System.out.println("@@@"+mcardid+"@@@");
+				ticket.setMcardID(Integer.parseInt(mcardid));
+		}*/
+			System.out.println("아아아아");
+		System.out.println("111111");
 		ticket.setMovie(request.getParameter("MOVIE"));
+		System.out.println("1");
 		ticket.setTheater(request.getParameter("THEATER"));
+		System.out.println("2");
 		ticket.setScreen(request.getParameter("SCREEN"));
+		System.out.println("3");
 		ticket.setCount(request.getParameter("COUNT"));
+		System.out.println("4");
 		ticket.setSeat1(request.getParameter("SEAT1"));
+		System.out.println("5");
 		ticket.setSeat2(request.getParameter("SEAT2"));
+		System.out.println("6");
 		ticket.setSeat3(request.getParameter("SEAT3"));
+		System.out.println("7");
 		ticket.setSeat4(request.getParameter("SEAT4"));
+		System.out.println("8");
 		ticket.setSeat5(request.getParameter("SEAT5"));
+		System.out.println("9");
 		ticket.setSeat6(request.getParameter("SEAT6"));
+		System.out.println("10");
 		ticket.setSeat7(request.getParameter("SEAT7"));
+		System.out.println("11");
 		ticket.setSeat8(request.getParameter("SEAT8"));
 		
 		sqlMapClient.insert("ticket.insertTicket", ticket);
 		return "/movie/movielist.do";
 		
+	}
+	
+	@RequestMapping("/ticket/admin.do")
+	public String admin() {
+		return "/ticket/admin/selectTicketForm.jsp";
 	}
 	
 /*	@RequestMapping("/getTicketList")

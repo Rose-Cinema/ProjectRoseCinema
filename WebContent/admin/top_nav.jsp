@@ -37,6 +37,12 @@
 				</ul>
 			</li>
 			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">티켓관리<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/RoseCinema/ticket/admin.do">티켓 정보 관리</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">극장 관리<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/RoseCinema/theaters/admin/edit/1">강남본점</a></li>
